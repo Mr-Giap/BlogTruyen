@@ -1,0 +1,8 @@
+- chức năng:
+	+ đăng nhập, đăng xuất.
+	+ Thêm sửa xóa: người dùng
+	+ Thêm sửa xóa: bài đăng.
+	+ Thêm sửa xóa: comment
+	+ Phân quyền.
+	+ Đăng ảnh theo tag or album
+- Chi tiết:

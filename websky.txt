@@ -6,3 +6,10 @@
 	+ Phân quyền.
 	+ Đăng ảnh theo tag or album
 - Chi tiết:
+	+ User
+	+ quyền
+	+ Thể loại: id, ten
+	+ Chuyên mục: id, ten
+	+ truyen: id, ten truyen,ten cii,văn án, idtheloai, do dai, nguoi dich, nguồn, isfull,tac gia, id chuyenmuc, isdelete. 
+	+ chương truyện: id, idtruyen, tieude, nội dung.
+	+ comment: id, idtruyen, idnguoicomment, replyto 

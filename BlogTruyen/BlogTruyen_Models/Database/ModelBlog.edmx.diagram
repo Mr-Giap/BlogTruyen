@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c04710b93473435f9dc94ff955475967" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogTruyenModel.Categories" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Comments" Width="1.5" PointX="10.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Chapters" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Interested" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Posts" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Roles" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Types" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogTruyenModel.Users" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Posts_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Comments_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Chapters_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Interested_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Interested_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Posts_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogTruyenModel.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

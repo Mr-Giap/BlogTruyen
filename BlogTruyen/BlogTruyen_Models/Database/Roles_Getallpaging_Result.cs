@@ -10,17 +10,11 @@
 namespace BlogTruyen_Models.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Chapters
+    public partial class Roles_Getallpaging_Result
     {
-        public int IdChapter { get; set; }
-        public System.Guid IdPost { get; set; }
-        public string Title { get; set; }
-        public string ChapContent { get; set; }
-        public string Note { get; set; }
-        public Nullable<System.DateTime> DateCreate { get; set; }
-    
-        public virtual Posts Posts { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public Nullable<long> rownumber { get; set; }
     }
 }

@@ -27,15 +27,487 @@ namespace BlogTruyen_Models.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<Comments> Comments { get; set; }
-        public virtual DbSet<Chapters> Chapters { get; set; }
-        public virtual DbSet<Interested> Interested { get; set; }
-        public virtual DbSet<Posts> Posts { get; set; }
-        public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Types> Types { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+    
+        public virtual int Categories_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_Delete", idParameter);
+        }
+    
+        public virtual int Categories_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Categories_Insert(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_Insert", nameParameter);
+        }
+    
+        public virtual int Categories_Update(Nullable<int> id, string name)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_Update", idParameter, nameParameter);
+        }
+    
+        public virtual int Chapter_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Delete", idParameter);
+        }
+    
+        public virtual int Chapter_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Chapter_Insert(Nullable<System.Guid> idpost, string title, string content, string note, Nullable<System.DateTime> datecreate)
+        {
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("content", content) :
+                new ObjectParameter("content", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            var datecreateParameter = datecreate.HasValue ?
+                new ObjectParameter("datecreate", datecreate) :
+                new ObjectParameter("datecreate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Insert", idpostParameter, titleParameter, contentParameter, noteParameter, datecreateParameter);
+        }
+    
+        public virtual int Chapter_Update(Nullable<int> id, Nullable<System.Guid> idpost, string title, string content, string note)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("content", content) :
+                new ObjectParameter("content", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Update", idParameter, idpostParameter, titleParameter, contentParameter, noteParameter);
+        }
+    
+        public virtual int Comment_Delete(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comment_Delete", idParameter);
+        }
+    
+        public virtual int Comment_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comment_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Comment_Insert(Nullable<System.Guid> id, Nullable<System.Guid> idpost, Nullable<System.Guid> iduser, Nullable<System.Guid> replyto, string content, Nullable<System.DateTime> datecreate)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            var replytoParameter = replyto.HasValue ?
+                new ObjectParameter("replyto", replyto) :
+                new ObjectParameter("replyto", typeof(System.Guid));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("content", content) :
+                new ObjectParameter("content", typeof(string));
+    
+            var datecreateParameter = datecreate.HasValue ?
+                new ObjectParameter("datecreate", datecreate) :
+                new ObjectParameter("datecreate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comment_Insert", idParameter, idpostParameter, iduserParameter, replytoParameter, contentParameter, datecreateParameter);
+        }
+    
+        public virtual int Comment_Update(Nullable<System.Guid> id, Nullable<System.Guid> idpost, Nullable<System.Guid> iduser, Nullable<System.Guid> replyto, string content)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            var replytoParameter = replyto.HasValue ?
+                new ObjectParameter("replyto", replyto) :
+                new ObjectParameter("replyto", typeof(System.Guid));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("content", content) :
+                new ObjectParameter("content", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comment_Update", idParameter, idpostParameter, iduserParameter, replytoParameter, contentParameter);
+        }
+    
+        public virtual int Interested_Delete(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Interested_Delete", idParameter);
+        }
+    
+        public virtual int Interested_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Interested_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Interested_Insert(Nullable<System.Guid> id, Nullable<bool> like, Nullable<bool> love, Nullable<bool> hate, Nullable<System.Guid> idpost, Nullable<System.Guid> iduser)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var likeParameter = like.HasValue ?
+                new ObjectParameter("like", like) :
+                new ObjectParameter("like", typeof(bool));
+    
+            var loveParameter = love.HasValue ?
+                new ObjectParameter("love", love) :
+                new ObjectParameter("love", typeof(bool));
+    
+            var hateParameter = hate.HasValue ?
+                new ObjectParameter("hate", hate) :
+                new ObjectParameter("hate", typeof(bool));
+    
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Interested_Insert", idParameter, likeParameter, loveParameter, hateParameter, idpostParameter, iduserParameter);
+        }
+    
+        public virtual int Interested_Update(Nullable<System.Guid> id, Nullable<bool> like, Nullable<bool> love, Nullable<bool> hate, Nullable<System.Guid> idpost, Nullable<System.Guid> iduser)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var likeParameter = like.HasValue ?
+                new ObjectParameter("like", like) :
+                new ObjectParameter("like", typeof(bool));
+    
+            var loveParameter = love.HasValue ?
+                new ObjectParameter("love", love) :
+                new ObjectParameter("love", typeof(bool));
+    
+            var hateParameter = hate.HasValue ?
+                new ObjectParameter("hate", hate) :
+                new ObjectParameter("hate", typeof(bool));
+    
+            var idpostParameter = idpost.HasValue ?
+                new ObjectParameter("idpost", idpost) :
+                new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Interested_Update", idParameter, likeParameter, loveParameter, hateParameter, idpostParameter, iduserParameter);
+        }
+    
+        public virtual int Post_Delete(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Post_Delete", idParameter);
+        }
+    
+        public virtual int Post_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Post_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Post_Insert(Nullable<System.Guid> id, string postname, string nameascii, string introduction, string avatar, Nullable<int> length, Nullable<System.DateTime> datecreate, string note, Nullable<System.Guid> iduser, string source, string author, Nullable<bool> isdelete, Nullable<bool> isfull, Nullable<int> idcategory, string type, string child)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var postnameParameter = postname != null ?
+                new ObjectParameter("postname", postname) :
+                new ObjectParameter("postname", typeof(string));
+    
+            var nameasciiParameter = nameascii != null ?
+                new ObjectParameter("nameascii", nameascii) :
+                new ObjectParameter("nameascii", typeof(string));
+    
+            var introductionParameter = introduction != null ?
+                new ObjectParameter("introduction", introduction) :
+                new ObjectParameter("introduction", typeof(string));
+    
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            var datecreateParameter = datecreate.HasValue ?
+                new ObjectParameter("datecreate", datecreate) :
+                new ObjectParameter("datecreate", typeof(System.DateTime));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            var sourceParameter = source != null ?
+                new ObjectParameter("source", source) :
+                new ObjectParameter("source", typeof(string));
+    
+            var authorParameter = author != null ?
+                new ObjectParameter("author", author) :
+                new ObjectParameter("author", typeof(string));
+    
+            var isdeleteParameter = isdelete.HasValue ?
+                new ObjectParameter("isdelete", isdelete) :
+                new ObjectParameter("isdelete", typeof(bool));
+    
+            var isfullParameter = isfull.HasValue ?
+                new ObjectParameter("isfull", isfull) :
+                new ObjectParameter("isfull", typeof(bool));
+    
+            var idcategoryParameter = idcategory.HasValue ?
+                new ObjectParameter("idcategory", idcategory) :
+                new ObjectParameter("idcategory", typeof(int));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var childParameter = child != null ?
+                new ObjectParameter("child", child) :
+                new ObjectParameter("child", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Post_Insert", idParameter, postnameParameter, nameasciiParameter, introductionParameter, avatarParameter, lengthParameter, datecreateParameter, noteParameter, iduserParameter, sourceParameter, authorParameter, isdeleteParameter, isfullParameter, idcategoryParameter, typeParameter, childParameter);
+        }
+    
+        public virtual int Post_Update(Nullable<System.Guid> id, string postname, string nameascii, string introduction, string avatar, Nullable<int> length, string note, Nullable<System.Guid> iduser, string source, string author, Nullable<bool> isdelete, Nullable<bool> isfull, Nullable<int> idcategory, string type, string child)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var postnameParameter = postname != null ?
+                new ObjectParameter("postname", postname) :
+                new ObjectParameter("postname", typeof(string));
+    
+            var nameasciiParameter = nameascii != null ?
+                new ObjectParameter("nameascii", nameascii) :
+                new ObjectParameter("nameascii", typeof(string));
+    
+            var introductionParameter = introduction != null ?
+                new ObjectParameter("introduction", introduction) :
+                new ObjectParameter("introduction", typeof(string));
+    
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            var iduserParameter = iduser.HasValue ?
+                new ObjectParameter("iduser", iduser) :
+                new ObjectParameter("iduser", typeof(System.Guid));
+    
+            var sourceParameter = source != null ?
+                new ObjectParameter("source", source) :
+                new ObjectParameter("source", typeof(string));
+    
+            var authorParameter = author != null ?
+                new ObjectParameter("author", author) :
+                new ObjectParameter("author", typeof(string));
+    
+            var isdeleteParameter = isdelete.HasValue ?
+                new ObjectParameter("isdelete", isdelete) :
+                new ObjectParameter("isdelete", typeof(bool));
+    
+            var isfullParameter = isfull.HasValue ?
+                new ObjectParameter("isfull", isfull) :
+                new ObjectParameter("isfull", typeof(bool));
+    
+            var idcategoryParameter = idcategory.HasValue ?
+                new ObjectParameter("idcategory", idcategory) :
+                new ObjectParameter("idcategory", typeof(int));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var childParameter = child != null ?
+                new ObjectParameter("child", child) :
+                new ObjectParameter("child", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Post_Update", idParameter, postnameParameter, nameasciiParameter, introductionParameter, avatarParameter, lengthParameter, noteParameter, iduserParameter, sourceParameter, authorParameter, isdeleteParameter, isfullParameter, idcategoryParameter, typeParameter, childParameter);
+        }
+    
+        public virtual int Roles_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Roles_Delete", idParameter);
+        }
+    
+        public virtual int Roles_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Roles_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual ObjectResult<Roles_GetbyId_Result> Roles_GetbyId(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Roles_GetbyId_Result>("Roles_GetbyId", idParameter);
+        }
+    
+        public virtual int Roles_Insert(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Roles_Insert", nameParameter);
+        }
+    
+        public virtual int Roles_Update(Nullable<int> id, string name)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Roles_Update", idParameter, nameParameter);
+        }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -140,6 +612,50 @@ namespace BlogTruyen_Models.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
+        public virtual int Type_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Type_Getall", startParameter, lengthParameter, total);
+        }
+    
+        public virtual int Types_Delete(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Types_Delete", idParameter);
+        }
+    
+        public virtual int Types_Insert(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Types_Insert", nameParameter);
+        }
+    
+        public virtual int Types_Update(Nullable<int> id, string name)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Types_Update", idParameter, nameParameter);
+        }
+    
         public virtual ObjectResult<User_CheckActive_Result> User_CheckActive(Nullable<System.Guid> id)
         {
             var idParameter = id.HasValue ?
@@ -171,9 +687,26 @@ namespace BlogTruyen_Models.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_CheckUsername_Result>("User_CheckUsername", userNameParameter);
         }
     
-        public virtual ObjectResult<User_Getall_Result> User_Getall()
+        public virtual int User_Delete(Nullable<System.Guid> id)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Getall_Result>("User_Getall");
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("User_Delete", idParameter);
+        }
+    
+        public virtual int User_Getall(Nullable<int> start, Nullable<int> length, ObjectParameter total)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("User_Getall", startParameter, lengthParameter, total);
         }
     
         public virtual ObjectResult<User_GetbyId_Result> User_GetbyId(Nullable<System.Guid> id)
@@ -183,6 +716,252 @@ namespace BlogTruyen_Models.Database
                 new ObjectParameter("id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_GetbyId_Result>("User_GetbyId", idParameter);
+        }
+    
+        public virtual int User_Insert(Nullable<System.Guid> id, string fullname, string avatar, string address, string email, string phone, Nullable<bool> sex, Nullable<System.DateTime> birthday, string username, string password, Nullable<System.DateTime> datecreate, string aboutme, Nullable<byte> permission, string passactive, Nullable<bool> isactive, Nullable<bool> isdelete, Nullable<int> roleid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var fullnameParameter = fullname != null ?
+                new ObjectParameter("fullname", fullname) :
+                new ObjectParameter("fullname", typeof(string));
+    
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var sexParameter = sex.HasValue ?
+                new ObjectParameter("sex", sex) :
+                new ObjectParameter("sex", typeof(bool));
+    
+            var birthdayParameter = birthday.HasValue ?
+                new ObjectParameter("birthday", birthday) :
+                new ObjectParameter("birthday", typeof(System.DateTime));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var datecreateParameter = datecreate.HasValue ?
+                new ObjectParameter("datecreate", datecreate) :
+                new ObjectParameter("datecreate", typeof(System.DateTime));
+    
+            var aboutmeParameter = aboutme != null ?
+                new ObjectParameter("aboutme", aboutme) :
+                new ObjectParameter("aboutme", typeof(string));
+    
+            var permissionParameter = permission.HasValue ?
+                new ObjectParameter("permission", permission) :
+                new ObjectParameter("permission", typeof(byte));
+    
+            var passactiveParameter = passactive != null ?
+                new ObjectParameter("passactive", passactive) :
+                new ObjectParameter("passactive", typeof(string));
+    
+            var isactiveParameter = isactive.HasValue ?
+                new ObjectParameter("isactive", isactive) :
+                new ObjectParameter("isactive", typeof(bool));
+    
+            var isdeleteParameter = isdelete.HasValue ?
+                new ObjectParameter("isdelete", isdelete) :
+                new ObjectParameter("isdelete", typeof(bool));
+    
+            var roleidParameter = roleid.HasValue ?
+                new ObjectParameter("roleid", roleid) :
+                new ObjectParameter("roleid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("User_Insert", idParameter, fullnameParameter, avatarParameter, addressParameter, emailParameter, phoneParameter, sexParameter, birthdayParameter, usernameParameter, passwordParameter, datecreateParameter, aboutmeParameter, permissionParameter, passactiveParameter, isactiveParameter, isdeleteParameter, roleidParameter);
+        }
+    
+        public virtual int User_Update(Nullable<System.Guid> id, string fullname, string avatar, string address, string email, string phone, Nullable<bool> sex, Nullable<System.DateTime> birthday, string username, string password, string aboutme, Nullable<byte> permission, string passactive, Nullable<bool> isactive, Nullable<bool> isdelete, Nullable<int> roleid)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var fullnameParameter = fullname != null ?
+                new ObjectParameter("fullname", fullname) :
+                new ObjectParameter("fullname", typeof(string));
+    
+            var avatarParameter = avatar != null ?
+                new ObjectParameter("avatar", avatar) :
+                new ObjectParameter("avatar", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var sexParameter = sex.HasValue ?
+                new ObjectParameter("sex", sex) :
+                new ObjectParameter("sex", typeof(bool));
+    
+            var birthdayParameter = birthday.HasValue ?
+                new ObjectParameter("birthday", birthday) :
+                new ObjectParameter("birthday", typeof(System.DateTime));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var aboutmeParameter = aboutme != null ?
+                new ObjectParameter("aboutme", aboutme) :
+                new ObjectParameter("aboutme", typeof(string));
+    
+            var permissionParameter = permission.HasValue ?
+                new ObjectParameter("permission", permission) :
+                new ObjectParameter("permission", typeof(byte));
+    
+            var passactiveParameter = passactive != null ?
+                new ObjectParameter("passactive", passactive) :
+                new ObjectParameter("passactive", typeof(string));
+    
+            var isactiveParameter = isactive.HasValue ?
+                new ObjectParameter("isactive", isactive) :
+                new ObjectParameter("isactive", typeof(bool));
+    
+            var isdeleteParameter = isdelete.HasValue ?
+                new ObjectParameter("isdelete", isdelete) :
+                new ObjectParameter("isdelete", typeof(bool));
+    
+            var roleidParameter = roleid.HasValue ?
+                new ObjectParameter("roleid", roleid) :
+                new ObjectParameter("roleid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("User_Update", idParameter, fullnameParameter, avatarParameter, addressParameter, emailParameter, phoneParameter, sexParameter, birthdayParameter, usernameParameter, passwordParameter, aboutmeParameter, permissionParameter, passactiveParameter, isactiveParameter, isdeleteParameter, roleidParameter);
+        }
+    
+        public virtual int Categories_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Categories_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<Chapter_Getallpaging_Result> Chapter_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Chapter_Getallpaging_Result>("Chapter_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual int Comment_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Comment_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<Interested_Getallpaging_Result> Interested_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Interested_Getallpaging_Result>("Interested_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<Post_Getallpaging_Result> Post_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Post_Getallpaging_Result>("Post_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<Roles_Getallpaging_Result> Roles_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Roles_Getallpaging_Result>("Roles_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<Type_Getallpaging_Result> Type_Getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Type_Getallpaging_Result>("Type_Getallpaging", startParameter, lengthParameter);
+        }
+    
+        public virtual ObjectResult<User_getallpaging_Result> User_getallpaging(Nullable<int> start, Nullable<int> length)
+        {
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_getallpaging_Result>("User_getallpaging", startParameter, lengthParameter);
         }
     }
 }

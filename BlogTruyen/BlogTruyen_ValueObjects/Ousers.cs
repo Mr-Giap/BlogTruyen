@@ -24,6 +24,6 @@ namespace BlogTruyen_ValueObjects
         public string PassActive { get; set; }
         public bool IsActived { get; set; }
         public bool IsDelete { get; set; }
-        public int RoleId { get; set; }
+        public Oroles Role { get; set; }
     }
 }

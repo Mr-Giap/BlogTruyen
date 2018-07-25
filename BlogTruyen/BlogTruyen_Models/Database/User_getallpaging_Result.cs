@@ -10,17 +10,9 @@
 namespace BlogTruyen_Models.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Users
+    public partial class User_getallpaging_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
-        {
-            this.Interested = new HashSet<Interested>();
-            this.Posts = new HashSet<Posts>();
-        }
-    
         public System.Guid IdUser { get; set; }
         public string FullName { get; set; }
         public string Avatar { get; set; }
@@ -38,11 +30,7 @@ namespace BlogTruyen_Models.Database
         public bool IsActived { get; set; }
         public bool IsDelete { get; set; }
         public int RoleId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Interested> Interested { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Posts> Posts { get; set; }
-        public virtual Roles Roles { get; set; }
+        public string RoleName { get; set; }
+        public Nullable<long> rownumber { get; set; }
     }
 }

@@ -10,18 +10,15 @@
 namespace BlogTruyen_Models.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Interested
+    public partial class Interested_Getallpaging_Result
     {
         public System.Guid Idinterested { get; set; }
-        public Nullable<int> Like { get; set; }
-        public Nullable<int> Love { get; set; }
-        public Nullable<int> Hate { get; set; }
+        public Nullable<bool> Like { get; set; }
+        public Nullable<bool> Love { get; set; }
+        public Nullable<bool> Hate { get; set; }
         public System.Guid IdPost { get; set; }
         public System.Guid IdUser { get; set; }
-    
-        public virtual Posts Posts { get; set; }
-        public virtual Users Users { get; set; }
+        public Nullable<long> rownumber { get; set; }
     }
 }

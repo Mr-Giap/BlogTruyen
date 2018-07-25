@@ -10,18 +10,9 @@
 namespace BlogTruyen_Models.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Posts
+    public partial class Post_Getallpaging_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Posts()
-        {
-            this.Comments = new HashSet<Comments>();
-            this.Chapters = new HashSet<Chapters>();
-            this.Interested = new HashSet<Interested>();
-        }
-    
         public System.Guid IdPost { get; set; }
         public string PostName { get; set; }
         public string NameAscii { get; set; }
@@ -38,14 +29,6 @@ namespace BlogTruyen_Models.Database
         public int IdCategory { get; set; }
         public string Type { get; set; }
         public string Child { get; set; }
-    
-        public virtual Categories Categories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comments> Comments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Chapters> Chapters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Interested> Interested { get; set; }
-        public virtual Users Users { get; set; }
+        public Nullable<long> rownumber { get; set; }
     }
 }

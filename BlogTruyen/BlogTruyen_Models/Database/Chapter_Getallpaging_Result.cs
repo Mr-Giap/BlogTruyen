@@ -10,11 +10,15 @@
 namespace BlogTruyen_Models.Database
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Types
+    public partial class Chapter_Getallpaging_Result
     {
-        public int IdType { get; set; }
-        public string TypeName { get; set; }
+        public int IdChapter { get; set; }
+        public System.Guid IdPost { get; set; }
+        public string Title { get; set; }
+        public string ChapContent { get; set; }
+        public string Note { get; set; }
+        public Nullable<System.DateTime> DateCreate { get; set; }
+        public Nullable<long> rownumber { get; set; }
     }
 }

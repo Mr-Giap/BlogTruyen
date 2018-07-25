@@ -52,18 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel\BaseUser.cs" />
-    <Compile Include="Database\Categories.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Chapters.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Comments.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Interested.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\ModelBlog.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,40 +67,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBlog.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Database\Posts.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Roles.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sysdiagrams.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Types.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\Users.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\User_CheckActive_Result.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\User_CheckLogin_Result.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\User_CheckUsername_Result.cs">
+    <Compile Include="Database\User_Getall1_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\User_Getall_Result.cs">
-      <DependentUpon>ModelBlog.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\User_GetbyId_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="mUsers.cs" />
@@ -130,6 +88,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogTruyen_ValueObjects\BlogTruyen_ValueObjects.csproj">
+      <Project>{b8ab4f4e-ba96-403c-bb00-0d9235b4b8c8}</Project>
+      <Name>BlogTruyen_ValueObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database\ModelBlog.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelBlog.edmx</DependentUpon>
@@ -140,15 +107,6 @@
       <DependentUpon>ModelBlog.edmx</DependentUpon>
       <LastGenOutput>ModelBlog.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BlogTruyen_ValueObjects\BlogTruyen_ValueObjects.csproj">
-      <Project>{b8ab4f4e-ba96-403c-bb00-0d9235b4b8c8}</Project>
-      <Name>BlogTruyen_ValueObjects</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

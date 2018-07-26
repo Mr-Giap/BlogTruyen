@@ -42,7 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseController\BaseCategories.cs" />
+    <Compile Include="BaseController\BaseChapter.cs" />
+    <Compile Include="BaseController\BaseComment.cs" />
+    <Compile Include="BaseController\BaseInterested.cs" />
+    <Compile Include="BaseController\BasePost.cs" />
+    <Compile Include="BaseController\BaseRole.cs" />
+    <Compile Include="BaseController\BaseType.cs" />
     <Compile Include="BaseController\BaseUser.cs" />
+    <Compile Include="cCategories.cs" />
+    <Compile Include="cChapters.cs" />
+    <Compile Include="cComments.cs" />
+    <Compile Include="cInteresteds.cs" />
+    <Compile Include="cPosts.cs" />
+    <Compile Include="cRoles.cs" />
+    <Compile Include="cTypes.cs" />
     <Compile Include="cUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,18 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BlogTruyenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BlogTruyenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Categories_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Categories_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Categories_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Categories_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Categories_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Categories_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
@@ -24,43 +23,45 @@
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="name" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Chapter_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Chapter_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Chapter_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="Chapter_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
         </Function>
+        <Function Name="Chapter_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="Chapter_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="idpost" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="name" Type="int" Mode="In" />
           <Parameter Name="title" Type="nvarchar" Mode="In" />
           <Parameter Name="content" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="note" Type="nvarchar" Mode="In" />
           <Parameter Name="datecreate" Type="datetime" Mode="In" />
+          <Parameter Name="isdel" Type="bit" Mode="In" />
         </Function>
         <Function Name="Chapter_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="idpost" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="title" Type="nvarchar" Mode="In" />
           <Parameter Name="content" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="note" Type="nvarchar" Mode="In" />
+          <Parameter Name="isdel" Type="bit" Mode="In" />
         </Function>
+        <Function Name="Comment_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Comment_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="Comment_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Comment_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Comment_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="Comment_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -78,17 +79,16 @@
           <Parameter Name="content" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Interested_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Interested_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="Interested_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Interested_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Interested_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="Interested_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -106,17 +106,16 @@
           <Parameter Name="idpost" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="iduser" Type="uniqueidentifier" Mode="In" />
         </Function>
+        <Function Name="Post_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Post_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="Post_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Post_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Post_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
         </Function>
         <Function Name="Post_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
@@ -153,13 +152,9 @@
           <Parameter Name="type" Type="nvarchar" Mode="In" />
           <Parameter Name="child" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="Roles_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Roles_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="Roles_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="Roles_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
@@ -205,16 +200,15 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="Type_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
-        </Function>
+        <Function Name="Type_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Type_Getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
           <Parameter Name="length" Type="int" Mode="In" />
         </Function>
         <Function Name="Types_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Types_GetbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Types_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -234,13 +228,9 @@
         <Function Name="User_CheckUsername" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userName" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="User_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="User_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
-        </Function>
-        <Function Name="User_Getall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="start" Type="int" Mode="In" />
-          <Parameter Name="length" Type="int" Mode="In" />
-          <Parameter Name="total" Type="int" Mode="InOut" />
         </Function>
         <Function Name="User_getallpaging" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="start" Type="int" Mode="In" />
@@ -287,55 +277,69 @@
           <Parameter Name="roleid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="BlogTruyenModelStoreContainer" />
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BlogTruyenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BlogTruyenEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Categories_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Categories_Delete">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Categories_Getall">
+          <FunctionImport Name="Categories_Getallpaging" ReturnType="Collection(BlogTruyenModel.Categories_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Categories_GetbyId" ReturnType="Collection(BlogTruyenModel.Categories_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Categories_Insert">
-          <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Categories_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Chapter_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Chapter_Delete">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="Chapter_Getall">
+          <FunctionImport Name="Chapter_Getallpaging" ReturnType="Collection(BlogTruyenModel.Chapter_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Chapter_GetbyId" ReturnType="Collection(BlogTruyenModel.Chapter_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Chapter_Insert">
+            <Parameter Name="id" Mode="In" Type="Guid" />
             <Parameter Name="idpost" Mode="In" Type="Guid" />
+            <Parameter Name="name" Mode="In" Type="Int32" />
             <Parameter Name="title" Mode="In" Type="String" />
             <Parameter Name="content" Mode="In" Type="String" />
             <Parameter Name="note" Mode="In" Type="String" />
             <Parameter Name="datecreate" Mode="In" Type="DateTime" />
+            <Parameter Name="isdel" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="Chapter_Update">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
             <Parameter Name="idpost" Mode="In" Type="Guid" />
             <Parameter Name="title" Mode="In" Type="String" />
             <Parameter Name="content" Mode="In" Type="String" />
             <Parameter Name="note" Mode="In" Type="String" />
+            <Parameter Name="isdel" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="Comment_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Comment_Delete">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="Comment_Getall">
+          <FunctionImport Name="Comment_Getallpaging" ReturnType="Collection(BlogTruyenModel.Comment_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Comment_GetbyId" ReturnType="Collection(BlogTruyenModel.Comment_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Comment_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -352,13 +356,16 @@
             <Parameter Name="replyto" Mode="In" Type="Guid" />
             <Parameter Name="content" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Interested_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Interested_Delete">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="Interested_Getall">
+          <FunctionImport Name="Interested_Getallpaging" ReturnType="Collection(BlogTruyenModel.Interested_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Interested_GetbyId" ReturnType="Collection(BlogTruyenModel.Interested_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Interested_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -376,13 +383,16 @@
             <Parameter Name="idpost" Mode="In" Type="Guid" />
             <Parameter Name="iduser" Mode="In" Type="Guid" />
           </FunctionImport>
+          <FunctionImport Name="Post_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Post_Delete">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="Post_Getall">
+          <FunctionImport Name="Post_Getallpaging" ReturnType="Collection(BlogTruyenModel.Post_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Post_GetbyId" ReturnType="Collection(BlogTruyenModel.Post_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Post_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -419,19 +429,19 @@
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="child" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Roles_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Roles_Delete">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Roles_Getall">
+          <FunctionImport Name="Roles_Getallpaging" ReturnType="Collection(BlogTruyenModel.Roles_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Roles_GetbyId" ReturnType="Collection(BlogTruyenModel.Roles_GetbyId_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Roles_Insert">
-          <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Roles_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -467,41 +477,44 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="Type_Getall">
+          <FunctionImport Name="Type_CountAll" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="Type_Getallpaging" ReturnType="Collection(BlogTruyenModel.Type_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Types_Delete">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Types_GetbyId" ReturnType="Collection(BlogTruyenModel.Types_GetbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Types_Insert">
-          <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Types_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="User_CheckActive" ReturnType="Collection(BlogTruyenModel.User_CheckActive_Result)">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="User_CheckLogin" ReturnType="Collection(BlogTruyenModel.User_CheckLogin_Result)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="User_CheckUsername" ReturnType="Collection(BlogTruyenModel.User_CheckUsername_Result)">
-          <Parameter Name="userName" Mode="In" Type="String" />
+            <Parameter Name="userName" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="User_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="User_Delete">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <FunctionImport Name="User_Getall">
+          <FunctionImport Name="User_getallpaging" ReturnType="Collection(BlogTruyenModel.User_getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
-            <Parameter Name="total" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="User_GetbyId" ReturnType="Collection(BlogTruyenModel.User_GetbyId_Result)">
-          <Parameter Name="id" Mode="In" Type="Guid" />
+            <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="User_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -540,39 +553,113 @@
             <Parameter Name="isdelete" Mode="In" Type="Boolean" />
             <Parameter Name="roleid" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="Categories_Getallpaging">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Chapter_Getallpaging" ReturnType="Collection(BlogTruyenModel.Chapter_Getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Comment_Getallpaging">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Interested_Getallpaging" ReturnType="Collection(BlogTruyenModel.Interested_Getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Post_Getallpaging" ReturnType="Collection(BlogTruyenModel.Post_Getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Roles_Getallpaging" ReturnType="Collection(BlogTruyenModel.Roles_Getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Type_Getallpaging" ReturnType="Collection(BlogTruyenModel.Type_Getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="User_getallpaging" ReturnType="Collection(BlogTruyenModel.User_getallpaging_Result)">
-            <Parameter Name="start" Mode="In" Type="Int32" />
-            <Parameter Name="length" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="Categories_Getallpaging_Result">
+          <Property Type="Int32" Name="IdCategory" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Categories_GetbyId_Result">
+          <Property Type="Int32" Name="IdCategory" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="Chapter_Getallpaging_Result">
+          <Property Type="Guid" Name="IdChapter" Nullable="false" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Int32" Name="NameChap" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="ChapContent" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Chapter_GetbyId_Result">
+          <Property Type="Guid" Name="IdChapter" Nullable="false" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Int32" Name="NameChap" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="ChapContent" Nullable="false" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Comment_Getallpaging_Result">
+          <Property Type="Guid" Name="IdComment" Nullable="false" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="Guid" Name="ReplyToUser" Nullable="true" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Comment_GetbyId_Result">
+          <Property Type="Guid" Name="IdComment" Nullable="false" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="Guid" Name="ReplyToUser" Nullable="true" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Interested_Getallpaging_Result">
+          <Property Type="Guid" Name="Idinterested" Nullable="false" />
+          <Property Type="Boolean" Name="Like" Nullable="true" />
+          <Property Type="Boolean" Name="Love" Nullable="true" />
+          <Property Type="Boolean" Name="Hate" Nullable="true" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Interested_GetbyId_Result">
+          <Property Type="Guid" Name="Idinterested" Nullable="false" />
+          <Property Type="Boolean" Name="Like" Nullable="true" />
+          <Property Type="Boolean" Name="Love" Nullable="true" />
+          <Property Type="Boolean" Name="Hate" Nullable="true" />
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Post_Getallpaging_Result">
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="String" Name="PostName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NameAscii" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Introduction" Nullable="true" />
+          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Length" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="String" Name="Source" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Author" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="Boolean" Name="IsFull" Nullable="false" />
+          <Property Type="Int32" Name="IdCategory" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Child" Nullable="true" MaxLength="500" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Post_GetbyId_Result">
+          <Property Type="Guid" Name="IdPost" Nullable="false" />
+          <Property Type="String" Name="PostName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="NameAscii" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Introduction" Nullable="true" />
+          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Length" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="String" Name="Source" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Author" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="Boolean" Name="IsFull" Nullable="false" />
+          <Property Type="Int32" Name="IdCategory" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Child" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="Roles_Getallpaging_Result">
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="Roles_GetbyId_Result">
           <Property Type="Int32" Name="RoleId" Nullable="false" />
           <Property Type="String" Name="RoleName" Nullable="true" MaxLength="50" />
@@ -587,6 +674,15 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Type_Getallpaging_Result">
+          <Property Type="Int32" Name="IdType" Nullable="false" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="100" />
+          <Property Type="Int64" Name="rownumber" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Types_GetbyId_Result">
+          <Property Type="Int32" Name="IdType" Nullable="false" />
+          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="User_CheckActive_Result">
           <Property Type="Guid" Name="IdUser" Nullable="false" />
@@ -645,72 +741,6 @@
           <Property Type="Boolean" Name="IsDelete" Nullable="false" />
           <Property Type="Int32" Name="RoleId" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="User_GetbyId_Result">
-          <Property Type="Guid" Name="IdUser" Nullable="false" />
-          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
-          <Property Type="Boolean" Name="Sex" Nullable="true" />
-          <Property Type="DateTime" Name="BirthDay" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="AboutMe" Nullable="true" />
-          <Property Type="Byte" Name="Permission" Nullable="true" />
-          <Property Type="String" Name="PassActive" Nullable="true" MaxLength="250" />
-          <Property Type="Boolean" Name="IsActived" Nullable="false" />
-          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
-          <Property Type="Int32" Name="RoleId" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="Chapter_Getallpaging_Result">
-          <Property Type="Int32" Name="IdChapter" Nullable="false" />
-          <Property Type="Guid" Name="IdPost" Nullable="false" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="1000" />
-          <Property Type="String" Name="ChapContent" Nullable="false" />
-          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
-          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
-          <Property Type="Int64" Name="rownumber" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Interested_Getallpaging_Result">
-          <Property Type="Guid" Name="Idinterested" Nullable="false" />
-          <Property Type="Boolean" Name="Like" Nullable="true" />
-          <Property Type="Boolean" Name="Love" Nullable="true" />
-          <Property Type="Boolean" Name="Hate" Nullable="true" />
-          <Property Type="Guid" Name="IdPost" Nullable="false" />
-          <Property Type="Guid" Name="IdUser" Nullable="false" />
-          <Property Type="Int64" Name="rownumber" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Post_Getallpaging_Result">
-          <Property Type="Guid" Name="IdPost" Nullable="false" />
-          <Property Type="String" Name="PostName" Nullable="false" MaxLength="250" />
-          <Property Type="String" Name="NameAscii" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Introduction" Nullable="true" />
-          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
-          <Property Type="Int32" Name="Length" Nullable="true" />
-          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
-          <Property Type="Guid" Name="IdUser" Nullable="false" />
-          <Property Type="String" Name="Source" Nullable="true" MaxLength="500" />
-          <Property Type="String" Name="Author" Nullable="true" MaxLength="100" />
-          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
-          <Property Type="Boolean" Name="IsFull" Nullable="false" />
-          <Property Type="Int32" Name="IdCategory" Nullable="false" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="500" />
-          <Property Type="String" Name="Child" Nullable="true" MaxLength="500" />
-          <Property Type="Int64" Name="rownumber" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Roles_Getallpaging_Result">
-          <Property Type="Int32" Name="RoleId" Nullable="false" />
-          <Property Type="String" Name="RoleName" Nullable="true" MaxLength="50" />
-          <Property Type="Int64" Name="rownumber" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Type_Getallpaging_Result">
-          <Property Type="Int32" Name="IdType" Nullable="false" />
-          <Property Type="String" Name="TypeName" Nullable="false" MaxLength="100" />
-          <Property Type="Int64" Name="rownumber" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="User_getallpaging_Result">
           <Property Type="Guid" Name="IdUser" Nullable="false" />
           <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
@@ -732,34 +762,203 @@
           <Property Type="String" Name="RoleName" Nullable="true" MaxLength="50" />
           <Property Type="Int64" Name="rownumber" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="User_GetbyId_Result">
+          <Property Type="Guid" Name="IdUser" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Avatar" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Sex" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDay" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PassWord" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="AboutMe" Nullable="true" />
+          <Property Type="Byte" Name="Permission" Nullable="true" />
+          <Property Type="String" Name="PassActive" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="IsActived" Nullable="false" />
+          <Property Type="Boolean" Name="IsDelete" Nullable="false" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BlogTruyenModelStoreContainer" CdmEntityContainer="BlogTruyenEntities" >
+          <FunctionImportMapping FunctionImportName="Categories_CountAll" FunctionName="BlogTruyenModel.Store.Categories_CountAll" />
           <FunctionImportMapping FunctionImportName="Categories_Delete" FunctionName="BlogTruyenModel.Store.Categories_Delete" />
-          <FunctionImportMapping FunctionImportName="Categories_Getall" FunctionName="BlogTruyenModel.Store.Categories_Getall" />
+          <FunctionImportMapping FunctionImportName="Categories_Getallpaging" FunctionName="BlogTruyenModel.Store.Categories_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Categories_Getallpaging_Result">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Categories_GetbyId" FunctionName="BlogTruyenModel.Store.Categories_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Categories_GetbyId_Result">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Categories_Insert" FunctionName="BlogTruyenModel.Store.Categories_Insert" />
           <FunctionImportMapping FunctionImportName="Categories_Update" FunctionName="BlogTruyenModel.Store.Categories_Update" />
+          <FunctionImportMapping FunctionImportName="Chapter_CountAll" FunctionName="BlogTruyenModel.Store.Chapter_CountAll" />
           <FunctionImportMapping FunctionImportName="Chapter_Delete" FunctionName="BlogTruyenModel.Store.Chapter_Delete" />
-          <FunctionImportMapping FunctionImportName="Chapter_Getall" FunctionName="BlogTruyenModel.Store.Chapter_Getall" />
+          <FunctionImportMapping FunctionImportName="Chapter_Getallpaging" FunctionName="BlogTruyenModel.Store.Chapter_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Chapter_Getallpaging_Result">
+                <ScalarProperty Name="IdChapter" ColumnName="IdChapter" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="NameChap" ColumnName="NameChap" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ChapContent" ColumnName="ChapContent" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Chapter_GetbyId" FunctionName="BlogTruyenModel.Store.Chapter_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Chapter_GetbyId_Result">
+                <ScalarProperty Name="IdChapter" ColumnName="IdChapter" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="NameChap" ColumnName="NameChap" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ChapContent" ColumnName="ChapContent" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Chapter_Insert" FunctionName="BlogTruyenModel.Store.Chapter_Insert" />
           <FunctionImportMapping FunctionImportName="Chapter_Update" FunctionName="BlogTruyenModel.Store.Chapter_Update" />
+          <FunctionImportMapping FunctionImportName="Comment_CountAll" FunctionName="BlogTruyenModel.Store.Comment_CountAll" />
           <FunctionImportMapping FunctionImportName="Comment_Delete" FunctionName="BlogTruyenModel.Store.Comment_Delete" />
-          <FunctionImportMapping FunctionImportName="Comment_Getall" FunctionName="BlogTruyenModel.Store.Comment_Getall" />
+          <FunctionImportMapping FunctionImportName="Comment_Getallpaging" FunctionName="BlogTruyenModel.Store.Comment_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Comment_Getallpaging_Result">
+                <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="ReplyToUser" ColumnName="ReplyToUser" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Comment_GetbyId" FunctionName="BlogTruyenModel.Store.Comment_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Comment_GetbyId_Result">
+                <ScalarProperty Name="IdComment" ColumnName="IdComment" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="ReplyToUser" ColumnName="ReplyToUser" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Comment_Insert" FunctionName="BlogTruyenModel.Store.Comment_Insert" />
           <FunctionImportMapping FunctionImportName="Comment_Update" FunctionName="BlogTruyenModel.Store.Comment_Update" />
+          <FunctionImportMapping FunctionImportName="Interested_CountAll" FunctionName="BlogTruyenModel.Store.Interested_CountAll" />
           <FunctionImportMapping FunctionImportName="Interested_Delete" FunctionName="BlogTruyenModel.Store.Interested_Delete" />
-          <FunctionImportMapping FunctionImportName="Interested_Getall" FunctionName="BlogTruyenModel.Store.Interested_Getall" />
+          <FunctionImportMapping FunctionImportName="Interested_Getallpaging" FunctionName="BlogTruyenModel.Store.Interested_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Interested_Getallpaging_Result">
+                <ScalarProperty Name="Idinterested" ColumnName="Idinterested" />
+                <ScalarProperty Name="Like" ColumnName="Like" />
+                <ScalarProperty Name="Love" ColumnName="Love" />
+                <ScalarProperty Name="Hate" ColumnName="Hate" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Interested_GetbyId" FunctionName="BlogTruyenModel.Store.Interested_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Interested_GetbyId_Result">
+                <ScalarProperty Name="Idinterested" ColumnName="Idinterested" />
+                <ScalarProperty Name="Like" ColumnName="Like" />
+                <ScalarProperty Name="Love" ColumnName="Love" />
+                <ScalarProperty Name="Hate" ColumnName="Hate" />
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Interested_Insert" FunctionName="BlogTruyenModel.Store.Interested_Insert" />
           <FunctionImportMapping FunctionImportName="Interested_Update" FunctionName="BlogTruyenModel.Store.Interested_Update" />
+          <FunctionImportMapping FunctionImportName="Post_CountAll" FunctionName="BlogTruyenModel.Store.Post_CountAll" />
           <FunctionImportMapping FunctionImportName="Post_Delete" FunctionName="BlogTruyenModel.Store.Post_Delete" />
-          <FunctionImportMapping FunctionImportName="Post_Getall" FunctionName="BlogTruyenModel.Store.Post_Getall" />
+          <FunctionImportMapping FunctionImportName="Post_Getallpaging" FunctionName="BlogTruyenModel.Store.Post_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Post_Getallpaging_Result">
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+                <ScalarProperty Name="NameAscii" ColumnName="NameAscii" />
+                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Child" ColumnName="Child" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Post_GetbyId" FunctionName="BlogTruyenModel.Store.Post_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Post_GetbyId_Result">
+                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+                <ScalarProperty Name="NameAscii" ColumnName="NameAscii" />
+                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Child" ColumnName="Child" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Post_Insert" FunctionName="BlogTruyenModel.Store.Post_Insert" />
           <FunctionImportMapping FunctionImportName="Post_Update" FunctionName="BlogTruyenModel.Store.Post_Update" />
+          <FunctionImportMapping FunctionImportName="Roles_CountAll" FunctionName="BlogTruyenModel.Store.Roles_CountAll" />
           <FunctionImportMapping FunctionImportName="Roles_Delete" FunctionName="BlogTruyenModel.Store.Roles_Delete" />
-          <FunctionImportMapping FunctionImportName="Roles_Getall" FunctionName="BlogTruyenModel.Store.Roles_Getall" />
+          <FunctionImportMapping FunctionImportName="Roles_Getallpaging" FunctionName="BlogTruyenModel.Store.Roles_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Roles_Getallpaging_Result">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Roles_GetbyId" FunctionName="BlogTruyenModel.Store.Roles_GetbyId">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BlogTruyenModel.Roles_GetbyId_Result">
@@ -794,8 +993,25 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BlogTruyenModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BlogTruyenModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="Type_Getall" FunctionName="BlogTruyenModel.Store.Type_Getall" />
+          <FunctionImportMapping FunctionImportName="Type_CountAll" FunctionName="BlogTruyenModel.Store.Type_CountAll" />
+          <FunctionImportMapping FunctionImportName="Type_Getallpaging" FunctionName="BlogTruyenModel.Store.Type_Getallpaging">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Type_Getallpaging_Result">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Types_Delete" FunctionName="BlogTruyenModel.Store.Types_Delete" />
+          <FunctionImportMapping FunctionImportName="Types_GetbyId" FunctionName="BlogTruyenModel.Store.Types_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.Types_GetbyId_Result">
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Types_Insert" FunctionName="BlogTruyenModel.Store.Types_Insert" />
           <FunctionImportMapping FunctionImportName="Types_Update" FunctionName="BlogTruyenModel.Store.Types_Update" />
           <FunctionImportMapping FunctionImportName="User_CheckActive" FunctionName="BlogTruyenModel.Store.User_CheckActive">
@@ -867,102 +1083,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_CountAll" FunctionName="BlogTruyenModel.Store.User_CountAll" />
           <FunctionImportMapping FunctionImportName="User_Delete" FunctionName="BlogTruyenModel.Store.User_Delete" />
-          <FunctionImportMapping FunctionImportName="User_Getall" FunctionName="BlogTruyenModel.Store.User_Getall" />
-          <FunctionImportMapping FunctionImportName="User_GetbyId" FunctionName="BlogTruyenModel.Store.User_GetbyId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.User_GetbyId_Result">
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
-                <ScalarProperty Name="Permission" ColumnName="Permission" />
-                <ScalarProperty Name="PassActive" ColumnName="PassActive" />
-                <ScalarProperty Name="IsActived" ColumnName="IsActived" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="User_Insert" FunctionName="BlogTruyenModel.Store.User_Insert" />
-          <FunctionImportMapping FunctionImportName="User_Update" FunctionName="BlogTruyenModel.Store.User_Update" />
-          <FunctionImportMapping FunctionImportName="Categories_Getallpaging" FunctionName="BlogTruyenModel.Store.Categories_Getallpaging" />
-          <FunctionImportMapping FunctionImportName="Chapter_Getallpaging" FunctionName="BlogTruyenModel.Store.Chapter_Getallpaging">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.Chapter_Getallpaging_Result">
-                <ScalarProperty Name="IdChapter" ColumnName="IdChapter" />
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ChapContent" ColumnName="ChapContent" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Comment_Getallpaging" FunctionName="BlogTruyenModel.Store.Comment_Getallpaging" />
-          <FunctionImportMapping FunctionImportName="Interested_Getallpaging" FunctionName="BlogTruyenModel.Store.Interested_Getallpaging">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.Interested_Getallpaging_Result">
-                <ScalarProperty Name="Idinterested" ColumnName="Idinterested" />
-                <ScalarProperty Name="Like" ColumnName="Like" />
-                <ScalarProperty Name="Love" ColumnName="Love" />
-                <ScalarProperty Name="Hate" ColumnName="Hate" />
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Post_Getallpaging" FunctionName="BlogTruyenModel.Store.Post_Getallpaging">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.Post_Getallpaging_Result">
-                <ScalarProperty Name="IdPost" ColumnName="IdPost" />
-                <ScalarProperty Name="PostName" ColumnName="PostName" />
-                <ScalarProperty Name="NameAscii" ColumnName="NameAscii" />
-                <ScalarProperty Name="Introduction" ColumnName="Introduction" />
-                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="Source" ColumnName="Source" />
-                <ScalarProperty Name="Author" ColumnName="Author" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
-                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Child" ColumnName="Child" />
-                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Roles_Getallpaging" FunctionName="BlogTruyenModel.Store.Roles_Getallpaging">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.Roles_Getallpaging_Result">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Type_Getallpaging" FunctionName="BlogTruyenModel.Store.Type_Getallpaging">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BlogTruyenModel.Type_Getallpaging_Result">
-                <ScalarProperty Name="IdType" ColumnName="IdType" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="rownumber" ColumnName="rownumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="User_getallpaging" FunctionName="BlogTruyenModel.Store.User_getallpaging">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BlogTruyenModel.User_getallpaging_Result">
@@ -988,6 +1110,31 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_GetbyId" FunctionName="BlogTruyenModel.Store.User_GetbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BlogTruyenModel.User_GetbyId_Result">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="PassActive" ColumnName="PassActive" />
+                <ScalarProperty Name="IsActived" ColumnName="IsActived" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="User_Insert" FunctionName="BlogTruyenModel.Store.User_Insert" />
+          <FunctionImportMapping FunctionImportName="User_Update" FunctionName="BlogTruyenModel.Store.User_Update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

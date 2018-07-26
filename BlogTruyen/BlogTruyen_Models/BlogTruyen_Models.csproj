@@ -51,7 +51,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseModel\BaseCategories.cs" />
+    <Compile Include="BaseModel\BaseChapter.cs" />
+    <Compile Include="BaseModel\BaseComment.cs" />
+    <Compile Include="BaseModel\BaseInterested.cs" />
+    <Compile Include="BaseModel\BasePost.cs" />
+    <Compile Include="BaseModel\BaseRoles.cs" />
+    <Compile Include="BaseModel\BaseType.cs" />
     <Compile Include="BaseModel\BaseUser.cs" />
+    <Compile Include="Database\Categories_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Categories_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Chapter_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Chapter_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Comment_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Comment_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Interested_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Interested_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\ModelBlog.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,12 +98,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBlog.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Database\User_Getall1_Result.cs">
+    <Compile Include="Database\Post_Getallpaging_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\User_Getall_Result.cs">
+    <Compile Include="Database\Post_GetbyId_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Roles_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Roles_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Types_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Type_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_CheckActive_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_CheckLogin_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_CheckUsername_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_GetbyId_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mCategories.cs" />
+    <Compile Include="mChapters.cs" />
+    <Compile Include="mComments.cs" />
+    <Compile Include="mInterested.cs" />
+    <Compile Include="mPosts.cs" />
+    <Compile Include="mRoles.cs" />
+    <Compile Include="mTypes.cs" />
     <Compile Include="mUsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

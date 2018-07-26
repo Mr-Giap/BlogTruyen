@@ -17,6 +17,7 @@ namespace BlogTruyen_Models.BaseModel
         public virtual T GetbyId(Guid id) { return default; }
         public virtual int Add(T user) { return 0; }
         public virtual int Update(T user) { return 0; }
-        public virtual int Delete(T user) { return 0; }
+        public virtual int Delete(Guid id) { return 0; }
+        public virtual int Gettotal() { return 0; }
     }
 }

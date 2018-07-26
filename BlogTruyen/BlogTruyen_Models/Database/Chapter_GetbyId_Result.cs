@@ -11,7 +11,7 @@ namespace BlogTruyen_Models.Database
 {
     using System;
     
-    public partial class Chapter_Getallpaging_Result
+    public partial class Chapter_GetbyId_Result
     {
         public System.Guid IdChapter { get; set; }
         public System.Guid IdPost { get; set; }
@@ -21,6 +21,5 @@ namespace BlogTruyen_Models.Database
         public string Note { get; set; }
         public Nullable<System.DateTime> DateCreate { get; set; }
         public bool IsDelete { get; set; }
-        public Nullable<long> rownumber { get; set; }
     }
 }

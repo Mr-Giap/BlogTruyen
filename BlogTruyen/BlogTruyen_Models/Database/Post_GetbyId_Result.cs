@@ -11,16 +11,23 @@ namespace BlogTruyen_Models.Database
 {
     using System;
     
-    public partial class Chapter_Getallpaging_Result
+    public partial class Post_GetbyId_Result
     {
-        public System.Guid IdChapter { get; set; }
         public System.Guid IdPost { get; set; }
-        public int NameChap { get; set; }
-        public string Title { get; set; }
-        public string ChapContent { get; set; }
-        public string Note { get; set; }
+        public string PostName { get; set; }
+        public string NameAscii { get; set; }
+        public string Introduction { get; set; }
+        public string Avatar { get; set; }
+        public Nullable<int> Length { get; set; }
         public Nullable<System.DateTime> DateCreate { get; set; }
+        public string Note { get; set; }
+        public System.Guid IdUser { get; set; }
+        public string Source { get; set; }
+        public string Author { get; set; }
         public bool IsDelete { get; set; }
-        public Nullable<long> rownumber { get; set; }
+        public bool IsFull { get; set; }
+        public int IdCategory { get; set; }
+        public string Type { get; set; }
+        public string Child { get; set; }
     }
 }

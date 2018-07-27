@@ -163,6 +163,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -199,6 +202,55 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\css\bootstrap-switch.min.css" />
+    <Content Include="Areas\Admin\Content\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\css\components.css" />
+    <Content Include="Areas\Admin\Content\css\custom.css" />
+    <Content Include="Areas\Admin\Content\css\darkblue.css" />
+    <Content Include="Areas\Admin\Content\css\daterangepicker-bs3.css" />
+    <Content Include="Areas\Admin\Content\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\Content\css\fullcalendar.min.css" />
+    <Content Include="Areas\Admin\Content\css\jqvmap.css" />
+    <Content Include="Areas\Admin\Content\css\layout.css" />
+    <Content Include="Areas\Admin\Content\css\plugins.css" />
+    <Content Include="Areas\Admin\Content\css\simple-line-icons.min.css" />
+    <Content Include="Areas\Admin\Content\css\tasks.css" />
+    <Content Include="Areas\Admin\Content\css\uniform.default.min.css" />
+    <Content Include="Areas\Admin\Content\images\test2.png" />
+    <Content Include="Areas\Admin\Content\images\tesst1.png" />
+    <Content Include="Areas\Admin\Content\images\logo.png" />
+    <Content Include="Areas\Admin\Content\images\favicon.ico" />
+    <Content Include="Areas\Admin\Content\images\sidebar_inline_toggler_icon_darkblue.jpg" />
+    <Content Include="Areas\Admin\Content\images\sidebar_toggler_icon_darkblue.png" />
+    <Content Include="Areas\Admin\Content\images\test.png" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-hover-dropdown.min.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap-switch.min.js" />
+    <Content Include="Areas\Admin\Content\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Content\js\daterangepicker.js" />
+    <Content Include="Areas\Admin\Content\js\demo.js" />
+    <Content Include="Areas\Admin\Content\js\fullcalendar.min.js" />
+    <Content Include="Areas\Admin\Content\js\index.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-migrate.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery-ui.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.blockui.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.cokie.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.easypiechart.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.categories.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.flot.resize.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.pulsate.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.slimscroll.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.sparkline.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.uniform.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.vmap.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.vmap.sampledata.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.vmap.world.js" />
+    <Content Include="Areas\Admin\Content\js\layout.js" />
+    <Content Include="Areas\Admin\Content\js\metronic.js" />
+    <Content Include="Areas\Admin\Content\js\moment.min.js" />
+    <Content Include="Areas\Admin\Content\js\quick-sidebar.js" />
+    <Content Include="Areas\Admin\Content\Template\index.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -228,6 +280,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Home.cshtml" />
+    <Content Include="Areas\Admin\Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Content\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Areas\Admin\Content\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Areas\Admin\Views\Shared\_Menuleft.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SideBar.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -253,6 +314,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Login\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

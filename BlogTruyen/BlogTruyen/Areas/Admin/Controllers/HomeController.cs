@@ -6,10 +6,11 @@ using System.Web.Mvc;
 
 namespace BlogTruyen.Areas.Admin.Controllers
 {
+    
     public class HomeController : Controller
     {
         // GET: Admin/Home
-        public ActionResult Home ()
+        public ActionResult Home()
         {
             return View();
         }

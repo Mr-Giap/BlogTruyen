@@ -49,12 +49,14 @@ namespace BlogTruyen_Models
                 user.IsActived = item.IsActived;
                 user.IsDelete = item.IsDelete;
                 user.Role = new Oroles { RoleId = item.RoleId, RoleName = item.RoleName };
+
+                list.Add(user);
             }
             return list ;
         }
         public override int Gettotal()
         {
-            int total = int.Parse(db.User_CountAll().ToString());
+            int total = Convert.ToInt32(db.User_CountAll().FirstOrDefault());
             return total;
         }
         public override int CheckActive(Guid id)

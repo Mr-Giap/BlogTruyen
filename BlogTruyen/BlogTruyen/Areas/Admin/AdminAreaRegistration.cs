@@ -15,9 +15,16 @@ namespace BlogTruyen.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Admin",
+                "Admin",
+                new {controller="Home" ,action = "Home", id = UrlParameter.Optional },
+                namespaces: new[] { "BlogTruyen.Areas.Admin.Controllers" }
+            );
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Home", id = UrlParameter.Optional },
+                namespaces: new[] { "BlogTruyen.Areas.Admin.Controllers" }
             );
         }
     }

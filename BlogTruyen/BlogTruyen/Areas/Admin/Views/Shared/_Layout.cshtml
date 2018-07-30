@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="~/Areas/Admin/Content/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    @*<link href="~/Areas/Admin/Content/css/components.css" id="style_components" rel="stylesheet" type="text/css" />*@
-    <link href="~/Areas/Admin/Content/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Admin/Content/css/components.css" rel="stylesheet" />
     <link href="~/Areas/Admin/Content/css/darkblue.css" rel="stylesheet" type="text/css" id="style_color" />
-
+    <link href="~/Areas/Admin/Content/css/layout.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Areas/Admin/Content/css/Style.css" rel="stylesheet" />*@
     <link rel="shortcut icon" href="~/Areas/Admin/Content/images/favicon.ico" />
 </head>
 <body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
@@ -26,7 +26,7 @@
             <!-- BEGIN LOGO -->
             <div class="page-logo">
                 <a href="@Url.Action("Home","Home")">
-                    <img src="~/Areas/Admin/Content/images/test2.png" alt="logo" class="logo-default" />
+                    <img src="~/Areas/Admin/Content/images/test2.png" alt="logo"  />
                 </a>
                 <div class="menu-toggler sidebar-toggler hide">
                 </div>
@@ -50,8 +50,26 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="external">
+                                <h3><span class="bold">12 pending</span> notifications</h3>
+                                <a href="extra_profile.html">view all</a>
+                            </li>
+                            <li>
+                                <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="time">just now</span>
+                                            <span class="details">
+                                                <span class="label label-sm label-icon label-success">
+                                                    <i class="fa fa-plus"></i>
+                                                </span>
+                                                New user registered.
+                                            </span>
+                                            </a>
+                                        </li>
+                                            @*<ul class="dropdown-menu">
+                            <li class="external">
                                 <h3><span class="bold">0</span> Thông báo</h3>
-                                <a href="extra_profile.html">Xem tất cả</a>
+                                <a href="#">Xem tất cả</a>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -65,14 +83,14 @@
                                                 New user registered.
                                             </span>
                                         </a>
-                                    </li>
+                                    </li>*@
                                 </ul>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="avatar" class="img-circle" src="" />
+                            <img alt="avatar" class="img-circle" src="~/Areas/Admin/Content/images/logo.png"/>
                             <span class="username username-hide-on-mobile">
                                 Name
                             </span>
@@ -100,11 +118,11 @@
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                    <li class="dropdown dropdown-quick-sidebar-toggler">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <i class="fas fa-sign-in-alt"></i>
-                        </a>
-                    </li>
+                    @*<li class="dropdown dropdown-quick-sidebar-toggler">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        </li>*@
                     <!-- END QUICK SIDEBAR TOGGLER -->
                 </ul>
             </div>
@@ -124,7 +142,6 @@
         <div class="page-content-wrapper">
             <div class="page-content">
                 <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-                
                 <!-- /.modal -->
                 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                 <!-- BEGIN PAGE HEADER-->
@@ -146,8 +163,9 @@
         </div>
         <!-- END CONTENT -->
         <!-- BEGIN QUICK SIDEBAR -->
-        <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="fas fa-sign-out-alt"></i></a>
-        @Html.Partial("_SideBar")
+        @*<a href="javascript:;" class="page-quick-sidebar-toggler">*@
+        @*</a>*@
+        @*@Html.Partial("_SideBar")*@
         <!-- END QUICK SIDEBAR -->
     </div>
     <!-- END CONTAINER -->
@@ -157,7 +175,7 @@
             2014 &copy; Metronic by keenthemes. <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
         </div>
         <div class="scroll-to-top">
-            <i class="icon-arrow-up"></i>
+            <i class="fas fa-arrow-circle-up" style="font-size: 35px;"></i>
         </div>
     </div>
     <!-- END FOOTER -->
@@ -168,54 +186,19 @@
     <script src="../../assets/global/plugins/excanvas.min.js"></script>
     <![endif]-->
     <script src="~/Areas/Admin/Content/js/jquery.min.js" type="text/javascript"></script>
-    @*<script src="~/Areas/Admin/Content/js/jquery-migrate.min.js" type="text/javascript"></script>*@
-    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
     <script src="~/Areas/Admin/Content/js/jquery-ui.min.js" type="text/javascript"></script>
     <script src="~/Areas/Admin/Content/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="~/Areas/Admin/Content/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
     <script src="~/Areas/Admin/Content/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-    @*<script src="~/Areas/Admin/Content/js/jquery.blockui.min.js" type="text/javascript"></script> *@
-    @*<script src="~/Areas/Admin/Content/js/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/bootstrap-switch.min.js" type="text/javascript"></script>*@
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    @*<script src="~/Areas/Admin/Content/js/jquery.vmap.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.vmap.world.js" type="text/javascript"></script>
-
-    <script src="~/Areas/Admin/Content/js/jquery.flot.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.flot.resize.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.flot.categories.min.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/jquery.pulsate.min.js" type="text/javascript"></script>*@
-    @*<script src="~/Areas/Admin/Content/js/moment.min.js" type="text/javascript"></script>*@
-    @*<script src="~/Areas/Admin/Content/js/daterangepicker.js" type="text/javascript"></script>*@
-    <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
-    @*<script src="~/Areas/Admin/Content/js/fullcalendar.min.js" type="text/javascript"></script>*@
-    @*<script src="~/Areas/Admin/Content/js/jquery.easypiechart.min.js" type="text/javascript"></script>*@
-    @*<script src="~/Areas/Admin/Content/js/jquery.sparkline.min.js" type="text/javascript"></script>*@
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
     <script src="~/Areas/Admin/Content/js/metronic.js" type="text/javascript"></script>
     <script src="~/Areas/Admin/Content/js/layout.js" type="text/javascript"></script>
-    <script src="~/Areas/Admin/Content/js/quick-sidebar.js" type="text/javascript"></script>
-    @*<script src="~/Areas/Admin/Content/js/demo.js" type="text/javascript"></script>*@
-    <script src="~/Areas/Admin/Content/js/index.js" type="text/javascript"></script>
-    @*<script src="~/Areas/Admin/Content/js/tasks.js" type="text/javascript"></script>*@
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
         jQuery(document).ready(function () {
-            //Metronic.init(); // init metronic core componets
+            Metronic.init(); // init metronic core componets
             Layout.init(); // init layout
-            QuickSidebar.init(); // init quick sidebar
-            //Demo.init(); // init demo features
-            Index.init();
-            //Index.initDashboardDaterange();
-            //Index.initJQVMAP(); // init index page's custom scripts
-            //Index.initCalendar(); // init index page's custom scripts
-            //Index.initCharts(); // init index page's custom scripts
-            //Index.initChat();
-            //Index.initMiniCharts();
-            //Tasks.initDashboardWidget();
         });
     </script>
     <!-- END JAVASCRIPTS -->

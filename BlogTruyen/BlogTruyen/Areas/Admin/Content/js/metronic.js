@@ -11,13 +11,13 @@ var Metronic = function() {
 
     var resizeHandlers = [];
 
-    var assetsPath = '../../assets/';
+    //var assetsPath = '../../assets/';
 
-    var globalImgPath = 'global/img/';
+    //var globalImgPath = 'global/img/';
 
-    var globalPluginsPath = 'global/plugins/';
+    //var globalPluginsPath = 'global/plugins/';
 
-    var globalCssPath = 'global/css/';
+    //var globalCssPath = 'global/css/';
 
     // theme layout color set
 

@@ -1,0 +1,12 @@
+﻿.page-logo>a{
+    height:100%;
+    width:100%;
+}
+.page-logo > a > img {
+    margin: 0px;
+    height:100%;
+    width:100%;
+}
+.dropdown-menu top-drop-noti {
+    padding-top:0;
+}

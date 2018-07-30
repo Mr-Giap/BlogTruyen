@@ -1,0 +1,140 @@
+﻿
+@model IEnumerable<BlogTruyen_ValueObjects.Ousers>
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h2>Danh sách tài khoản</h2>
+<div>
+    <a href="@Url.Action("User","Insert")" class="btn btn-info" style="margin-bottom:10px; float:right;">Thêm mới tài khoản</a>
+</div>
+<table class="table table-sm table-hover table-bordered table-striped table-responsive-xl">
+    <tr>
+        <th scope="col" style="text-align:center;" class="hidden">
+            Mã tài khoản
+        </th>
+        <th scope="col" style="text-align:center;">
+            Họ và tên
+        </th>
+        <th scope="col" style="text-align:center;">
+            Ảnh đại diện
+        </th>
+        <th scope="col" style="text-align:center;">
+            Địa chỉ
+        </th>
+        <th scope="col" style="text-align:center;">
+            Email
+        </th>
+        <th scope="col" style="text-align:center;">
+            Số điện thoại
+        </th>
+        <th scope="col" style="text-align:center;">
+            Giới tính
+        </th>
+        <th scope="col" style="text-align:center;">
+            Ngày sinh
+        </th>
+        <th scope="col" style="text-align:center;">
+            Tài khoản
+        </th>
+        <th scope="col" style="text-align:center;">
+            Mật khẩu
+        </th>
+        <th scope="col" style="text-align:center;">
+            Ngày tạo
+        </th>
+        <th scope="col" style="text-align:center;">
+            Kích hoạt
+        </th>
+        <th scope="col" style="text-align:center;">
+            Tình trạng
+        </th>
+        <th scope="col" style="text-align:center;">
+            Quyền
+        </th>
+        <th scope="col" style="text-align:center;">
+            Xử lý
+        </th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td scope="row" style="text-align:center;" class="hidden">
+            @item.IdUser
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.FullName
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.Avatar
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.Address
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.Email
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.PhoneNumber
+        </td>
+        @{
+            if (item.Sex == false)
+            {
+                <td scope="row" style="text-align:center;">Nam</td>
+            }
+            else
+            {
+                <td scope="row" style="text-align:center;">Nữ</td>
+            }
+        }
+
+        <td scope="row" style="text-align:center;">
+            @item.BirthDay.ToString("dd-MM-yyyy")
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.UserName
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.PassWord
+        </td>
+        <td scope="row" style="text-align:center;">
+            @{ item.DateCreate.ToString();
+            }
+        </td>
+        @{
+            if (item.IsDelete == true)
+            {
+                <td scope="row" style="text-align:center;">Đã xóa</td>
+            }
+            else
+            {
+                <td scope="row" style="text-align:center;">Đang sử dụng</td>
+            }
+        }
+        <td scope="row" style="text-align:center;">
+            @item.IsActived
+        </td>
+        <td scope="row" style="text-align:center;"class="hidden">
+            @item.Role.RoleId
+        </td>
+        <td scope="row" style="text-align:center;">
+            @item.Role.RoleName
+        </td>
+        <td scope="row" style="text-align:center;">
+            <a href="" class="btn btn-info"><i class="far fa-edit"></i></a>
+            <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+        </td>
+    </tr>
+    }
+</table>
+
+@for (int i = 0; i <= ViewBag.MaxPage; i++)
+{
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { pageIndex = i })">@(i + 1)</a>
+        </li>
+    </ul>
+}
+

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B8AB4F4E-BA96-403C-BB00-0D9235B4B8C8}</ProjectGuid>
+    <ProjectGuid>{44F25FA7-143F-4DA4-9A59-87B5D1304581}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BlogTruyen_ValueObjects</RootNamespace>
-    <AssemblyName>BlogTruyen_ValueObjects</AssemblyName>
+    <RootNamespace>BlogTruyen_Simple</RootNamespace>
+    <AssemblyName>BlogTruyen_Simple</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,7 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -42,18 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ocategories.cs" />
-    <Compile Include="Ochapters.cs" />
-    <Compile Include="Ocomments.cs" />
-    <Compile Include="Ointeresteds.cs" />
-    <Compile Include="Oposts.cs" />
-    <Compile Include="Oroles.cs" />
-    <Compile Include="Otypes.cs" />
-    <Compile Include="Ousers.cs" />
+    <Compile Include="ConvertUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commonstants\" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

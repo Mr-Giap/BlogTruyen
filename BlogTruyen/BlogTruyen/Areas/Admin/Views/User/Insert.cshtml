@@ -1,8 +1,72 @@
-﻿
+﻿@model BlogTruyen_ValueObjects.Ousers
 @{
-    ViewBag.Title = "Insert";
+    ViewBag.Title = "Thêm mới tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+@using (Html.BeginForm("Insert", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.FullName)</label>
+            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Nhập tên người dùng...", @type = "text" })
+        </div>
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.Address)</label>
+            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Nhập địa chỉ...", @type = "text" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.Email)</label>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Nhập Email...", @type = "Email" })
+        </div>
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.PhoneNumber)</label>
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Nhập số điện thoại...", @type = "Number" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class=" col-md-12"><label for="sex">Giới tính</label></div>
+            <div class="col-md-4" name="sex">
+                <div class="col-md-6">
+                    @Html.RadioButtonFor(model => model.Sex, "false")
+                    <label for="false">Nam</label>
+                </div>
+                <div class="col-md-6">
+                    @Html.RadioButtonFor(model => model.Sex, "true")
+                    <label for="true">Nữ</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.Email)</label>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Nhập Email...", @type = "Email" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.UserName)</label>
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Nhập tài khoản đăng nhập...", @type = "text" })
+        </div>
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.PassWord)</label>
+            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.PassWord)</label>
+            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+        </div>
+        <div class="form-group col-md-6">
+            <label>@Html.LabelFor(model => model.PassWord)</label>
+            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        }
 
 

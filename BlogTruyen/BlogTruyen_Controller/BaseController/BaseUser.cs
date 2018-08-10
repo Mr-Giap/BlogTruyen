@@ -10,7 +10,7 @@ namespace BlogTruyen_Controller.BaseController
     public class BaseUser<T>
     {
         public mUsers model = new mUsers();
-        public virtual int Checklogin(string username, string password) { return 0; }
+        public virtual T Checklogin(string username, string password) { return default; }
         public virtual int CheckUsername(string username) { return 0; }
         public virtual int CheckActive(Guid id) { return 0; }
         public virtual List<T> Getall(int start, int length) { List<T> list = new List<T>(); return list; }

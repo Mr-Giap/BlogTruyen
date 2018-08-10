@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BlogTruyen_ValueObjects.Ocategories>
+
+@{
+    ViewBag.Title = "Danh sách nhóm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class=" text-center">Danh sách các nhóm</h2>
+<p class="col-lg-12">
+    <a href="@Url.Action("Insert", "Category")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm nhóm mới</a>
+</p>
+<div class="table-responsive col-lg-12">
+    <table class="table table-sm table-hover table-bordered table-striped">
+        <tr>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(x => x.IdCategory)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(x => x.CategoryName)
+            </th>
+            <th scope="col" style="text-align:center;"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row" style="text-align:center;">
+                    @item.IdCategory
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @item.CategoryName
+                </td>
+                <td scope="row" style="text-align:center;">
+                    <a href="@Url.Action("Update", "Category", new { @id = item.IdCategory })" class="btn btn-info"><i class="far fa-edit"></i></a>
+                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    @for (int i = 0; i <= ViewBag.MaxPage; i++)
+    {
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { pageIndex = i })">@(i + 1)</a>
+            </li>
+        </ul>
+    }
+</div>
+
+

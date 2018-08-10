@@ -1,10 +1,11 @@
 ﻿
 @model IEnumerable<BlogTruyen_ValueObjects.Ousers>
 @{
+    ViewBag.urlReturn = HttpContext.Current.Request.Url.AbsoluteUri;
     ViewBag.Title = "Danh sách tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<h2>Danh sách tài khoản</h2>
+<h2 class="text-center">Danh sách tài khoản</h2>
 <div>
     <a href="@Url.Action("Insert","User")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm mới tài khoản</a>
 </div>
@@ -12,49 +13,48 @@
     <table class="table table-sm table-hover table-bordered table-striped">
         <tr>
             <th scope="col" style="text-align:center;" class="hidden">
-                Mã tài khoản
+                @Html.DisplayNameFor(x =>x.IdUser)
             </th>
             <th scope="col" style="text-align:center;">
-                Họ và tên
+                @Html.DisplayNameFor(x => x.FullName)
             </th>
             <th scope="col" style="text-align:center;">
-                Ảnh đại diện
+                @Html.DisplayNameFor(x => x.Avatar)
             </th>
             <th scope="col" style="text-align:center;">
-                Địa chỉ
+                @Html.DisplayNameFor(x => x.Address)
             </th>
             <th scope="col" style="text-align:center;">
-                Email
+                @Html.DisplayNameFor(x => x.Email)
             </th>
             <th scope="col" style="text-align:center;">
-                Số điện thoại
+                @Html.DisplayNameFor(x => x.PhoneNumber)
             </th>
             <th scope="col" style="text-align:center;">
-                Giới tính
+                @Html.DisplayNameFor(x => x.Sex)
             </th>
             <th scope="col" style="text-align:center;">
-                Ngày sinh
+                @Html.DisplayNameFor(x => x.BirthDay)
             </th>
             <th scope="col" style="text-align:center;">
-                Tài khoản
+                @Html.DisplayNameFor(x => x.UserName)
             </th>
             <th scope="col" style="text-align:center;">
-                Mật khẩu
+                @Html.DisplayNameFor(x => x.PassWord)
             </th>
             <th scope="col" style="text-align:center;">
-                Ngày tạo
+                @Html.DisplayNameFor(x => x.DateCreate)
             </th>
             <th scope="col" style="text-align:center;">
-                Kích hoạt
+                @Html.DisplayNameFor(x => x.IsActived)
             </th>
             <th scope="col" style="text-align:center;">
-                Tình trạng
+                @Html.DisplayNameFor(x => x.IsDelete)
             </th>
             <th scope="col" style="text-align:center;">
-                Quyền
+                @Html.DisplayNameFor(x => x.Role)
             </th>
             <th scope="col" style="text-align:center;">
-                Xử lý
             </th>
 
         </tr>
@@ -68,7 +68,7 @@
                     @item.FullName
                 </td>
                 <td scope="row" style="text-align:center;">
-                    @item.Avatar
+                   <img src="@item.Avatar" style="height:100px; width:100px" alt="avatar user" /> 
                 </td>
                 <td scope="row" style="text-align:center;">
                     @item.Address
@@ -100,8 +100,7 @@
                     @item.PassWord
                 </td>
                 <td scope="row" style="text-align:center;">
-                    @{ item.DateCreate.ToString();
-                    }
+                    @item.DateCreate.ToString()                
                 </td>
                 @{
                     if (item.IsDelete == true)
@@ -113,9 +112,16 @@
                         <td scope="row" style="text-align:center;">Đang sử dụng</td>
                     }
                 }
-                <td scope="row" style="text-align:center;">
-                    @item.IsActived
-                </td>
+                @{
+                    if (item.IsActived == true)
+                    {
+                        <td scope="row" style="text-align:center;">Đã kích hoạt</td>
+                    }
+                    else
+                    {
+                        <td scope="row" style="text-align:center;">Chưa kích hoạt</td>
+                    }
+                }
                 <td scope="row" style="text-align:center;" class="hidden">
                     @item.Role.RoleId
                 </td>
@@ -123,7 +129,7 @@
                     @item.Role.RoleName
                 </td>
                 <td scope="row" style="text-align:center;">
-                    <a href="" class="btn btn-info"><i class="far fa-edit"></i></a>
+                    <a href="@Url.Action("Update", "User", new { @id = item.IdUser })" class="btn btn-info"><i class="far fa-edit"></i></a>
                     <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>

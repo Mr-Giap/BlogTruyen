@@ -1,4 +1,4 @@
-﻿.page-logo>a{
+﻿/*.page-logo>a{
     height:100%;
     width:100%;
 }
@@ -9,4 +9,30 @@
 }
 .dropdown-menu top-drop-noti {
     padding-top:0;
+}*/
+/*05052018-check user insert*/
+.spinner-img {
+    /*background-image: url('../images/portlet-collapse-icon.png');*/
+    /*background-image: url('../images/check-solid.svg');*/
+    /*background-image: url('../images/input-spinner.gif');*/
+    background-repeat: no-repeat;
+    background-position: right 8px;
+}
+/*form login*/
+.login-admin {
+    background-image: url('../images/s83Uh1w.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo-login {
+    text-align: center;
+}
+.frmlogin > .form-group > .center-login {
+    width: 400px;
+    margin: 0 auto;
+}
+.input-icon>i {
+    color: black;
 }

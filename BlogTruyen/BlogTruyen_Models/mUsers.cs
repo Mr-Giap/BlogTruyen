@@ -11,19 +11,31 @@ namespace BlogTruyen_Models
 {
     public class mUsers:BaseUser<Ousers>
     {
-        public override int Checklogin(string username, string password)
+        public override Ousers Checklogin(string username, string password)
         {
-            int rs = 0;
-            var kq = db.User_CheckLogin(username, password);
-            if(kq.Count() == 0)
+            Ousers user = new Ousers();
+            var item = db.User_CheckLogin(username, password).FirstOrDefault();
+            if(item != null)
             {
-                rs = 0;
+                user.IdUser = item.IdUser;
+                user.FullName = item.FullName;
+                user.Avatar = item.Avatar;
+                user.Address = item.Address;
+                user.Email = item.Email;
+                user.PhoneNumber = item.PhoneNumber;
+                user.Sex = item.Sex;
+                user.BirthDay = item.BirthDay;
+                user.UserName = item.UserName;
+                user.PassWord = item.PassWord;
+                user.DateCreate = item.DateCreate;
+                user.AboutMe = item.AboutMe;
+                user.Permission = item.Permission;
+                user.PassActive = item.PassActive;
+                user.IsActived = item.IsActived;
+                user.IsDelete = item.IsDelete;
+                user.Role = new Oroles { RoleId = item.RoleId};
             }
-            else
-            {
-                rs = 1;
-            }
-            return rs;
+            return user;
         }
         public override List<Ousers> Getall(int start, int length)
         {

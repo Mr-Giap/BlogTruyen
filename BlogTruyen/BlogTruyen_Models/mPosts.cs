@@ -72,7 +72,7 @@ namespace BlogTruyen_Models
         public override int Gettotal()
         {
             int rs = 0;
-            rs = int.Parse(db.Post_CountAll().ToString());
+            rs = int.Parse(db.Post_CountAll().FirstOrDefault().ToString());
             return rs;
         }
         public override int Add(Oposts post)

@@ -10,7 +10,7 @@ namespace BlogTruyen_Controller
 {
     public class cUsers:BaseUser<Ousers>
     {
-        public override int Checklogin(string username, string password)
+        public override Ousers Checklogin(string username, string password)
         {
             return model.Checklogin(username, password);
         }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BlogTruyenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BlogTruyenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <Function Name="Categories_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Categories_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -277,25 +277,24 @@
           <Parameter Name="roleid" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="BlogTruyenModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BlogTruyenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BlogTruyenEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="Categories_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Categories_Delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Categories_Getallpaging" ReturnType="Collection(BlogTruyenModel.Categories_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Categories_GetbyId" ReturnType="Collection(BlogTruyenModel.Categories_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Categories_Insert">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Categories_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -303,14 +302,14 @@
           </FunctionImport>
           <FunctionImport Name="Chapter_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Chapter_Delete">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Chapter_Getallpaging" ReturnType="Collection(BlogTruyenModel.Chapter_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Chapter_GetbyId" ReturnType="Collection(BlogTruyenModel.Chapter_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Chapter_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -332,14 +331,14 @@
           </FunctionImport>
           <FunctionImport Name="Comment_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Comment_Delete">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Comment_Getallpaging" ReturnType="Collection(BlogTruyenModel.Comment_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Comment_GetbyId" ReturnType="Collection(BlogTruyenModel.Comment_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Comment_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -358,14 +357,14 @@
           </FunctionImport>
           <FunctionImport Name="Interested_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Interested_Delete">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Interested_Getallpaging" ReturnType="Collection(BlogTruyenModel.Interested_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Interested_GetbyId" ReturnType="Collection(BlogTruyenModel.Interested_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Interested_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -385,14 +384,14 @@
           </FunctionImport>
           <FunctionImport Name="Post_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Post_Delete">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Post_Getallpaging" ReturnType="Collection(BlogTruyenModel.Post_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Post_GetbyId" ReturnType="Collection(BlogTruyenModel.Post_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="Post_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />
@@ -431,17 +430,17 @@
           </FunctionImport>
           <FunctionImport Name="Roles_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="Roles_Delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Roles_Getallpaging" ReturnType="Collection(BlogTruyenModel.Roles_Getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Roles_GetbyId" ReturnType="Collection(BlogTruyenModel.Roles_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Roles_Insert">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Roles_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -483,38 +482,38 @@
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Types_Delete">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Types_GetbyId" ReturnType="Collection(BlogTruyenModel.Types_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Types_Insert">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="Types_Update">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="User_CheckActive" ReturnType="Collection(BlogTruyenModel.User_CheckActive_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="User_CheckLogin" ReturnType="Collection(BlogTruyenModel.User_CheckLogin_Result)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="User_CheckUsername" ReturnType="Collection(BlogTruyenModel.User_CheckUsername_Result)">
-            <Parameter Name="userName" Mode="In" Type="String" />
+          <Parameter Name="userName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="User_CountAll" ReturnType="Collection(Int32)" />
           <FunctionImport Name="User_Delete">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="User_getallpaging" ReturnType="Collection(BlogTruyenModel.User_getallpaging_Result)">
             <Parameter Name="start" Mode="In" Type="Int32" />
             <Parameter Name="length" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="User_GetbyId" ReturnType="Collection(BlogTruyenModel.User_GetbyId_Result)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="User_Insert">
             <Parameter Name="id" Mode="In" Type="Guid" />

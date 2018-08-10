@@ -4,12 +4,13 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using BlogTruyen_Controller;
 using BlogTruyen_ValueObjects;
 
 namespace BlogTruyen.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private int pagesize = int.Parse(ConfigurationManager.AppSettings["pageSize"]);
         // GET: Admin/User
@@ -25,14 +26,47 @@ namespace BlogTruyen.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Insert()
         {
+            ViewBag.listRole = new SelectList((new cRoles().GetAllpaging(0, 10)), "RoleId", "RoleName");
             return View();
         }
         [HttpPost]
         public ActionResult Insert(Ousers user)
         {
+            user.DateCreate = DateTime.Now;
+            user.IdUser = Guid.NewGuid();
+            if(user.Avatar == null)
+            {
+                //string name = Path.GetFileName(avatar)
+                user.Avatar = "default";
+            }
             cUsers csers = new cUsers();
             csers.Add(user);
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Update(Guid id)
+        {
+            cUsers csers = new cUsers();
+            var user = csers.GetbyId(id);
+            ViewBag.listRole = new SelectList((new cRoles().GetAllpaging(0, 10)), "RoleId", "RoleName");
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Update(Ousers user)
+        {
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public JsonResult Delete(Guid id)
+        {
+            
+            return Json(new {rs = "OK" });
+        }
+        public JsonResult CheckuserName(string username)
+        {
+            cUsers csers = new cUsers();
+            var rs = csers.CheckUsername(username);
+            return Json(new { kq = rs});
         }
     }
 }

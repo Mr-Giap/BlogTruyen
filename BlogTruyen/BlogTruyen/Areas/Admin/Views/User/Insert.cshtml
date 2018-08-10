@@ -1,72 +1,107 @@
 ﻿@model BlogTruyen_ValueObjects.Ousers
 @{
+    ViewBag.url = Url.Action("Index", "Login");
     ViewBag.Title = "Thêm mới tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listRole = ViewBag.listRole;
 }
+@section script{
+    <script>
+        $("#btnchonanh").on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#Avatar').val(url);
+            };
+            finder.popup();
+        });
+    </script>
+}
+<h2 class="margin-bottom-40 text-uppercase text-center"> Đăng ký tài khoản mới</h2>
+@Html.ValidationSummary(true)
 @using (Html.BeginForm("Insert", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.FullName)</label>
-            @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", @placeholder = "Nhập tên người dùng...", @type = "text" })
+        <div class="form-group col-md-6 ">
+            @Html.LabelFor(x => x.FullName, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-signature"></i>
+                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control placeholder-no-fix", @placeholder = "Nhập tên người dùng...", @type = "text", @autocomplete = "off" })
+            </div>
         </div>
         <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.Address)</label>
-            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Nhập địa chỉ...", @type = "text" })
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.Email)</label>
-            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Nhập Email...", @type = "Email" })
-        </div>
-        <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.PhoneNumber)</label>
-            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @placeholder = "Nhập số điện thoại...", @type = "Number" })
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-6">
-            <div class=" col-md-12"><label for="sex">Giới tính</label></div>
-            <div class="col-md-4" name="sex">
-                <div class="col-md-6">
-                    @Html.RadioButtonFor(model => model.Sex, "false")
-                    <label for="false">Nam</label>
-                </div>
-                <div class="col-md-6">
-                    @Html.RadioButtonFor(model => model.Sex, "true")
-                    <label for="true">Nữ</label>
-                </div>
+            @Html.LabelFor(x => x.Address, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-address-card"></i>
+                @Html.TextBoxFor(model => model.Address, new { @class = "form-control  placeholder-no-fix", @placeholder = "Nhập địa chỉ...", @type = "text", @autocomplete = "off" })
             </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.Email)</label>
-            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Nhập Email...", @type = "Email" })
+            @Html.LabelFor(x => x.Email, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-envelope"></i>
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control placeholder-no-fix", @placeholder = "Nhập Email...", @type = "Email", @autocomplete = "off" })
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(x => x.PhoneNumber, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-phone"></i>
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control placeholder-no-fix", @placeholder = "Nhập số điện thoại...", @type = "Number", @autocomplete = "off" })
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group form-md-radios col-md-6">
+            <label class="font-weight-bold">Giới tính</label>
+            <div class="form-check form-check-inline">
+                @Html.RadioButtonFor(model => model.Sex, "false", new { id = "Nam", @checked = "checked" })
+                <label class="margin-right-10">Nam</label>
+                @Html.RadioButtonFor(model => model.Sex, "true", new { id = "Nu" })
+                <label>Nữ</label>
+            </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.UserName)</label>
-            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Nhập tài khoản đăng nhập...", @type = "text" })
-        </div>
-        <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.PassWord)</label>
-            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+
+            @Html.LabelFor(x => x.BirthDay, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-birthday-cake"></i>
+                @Html.TextBoxFor(model => model.BirthDay, new { @class = "form-control placeholder-no-fix", @placeholder = "Nhập ngày sinh...", @type = "date" })
+            </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.PassWord)</label>
-            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+            @Html.LabelFor(x => x.UserName, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control placeholder-no-fix spinner-img", @placeholder = "Nhập tài khoản đăng nhập...", @type = "text", @autocomplete = "off" })
+            </div>
         </div>
         <div class="form-group col-md-6">
-            <label>@Html.LabelFor(model => model.PassWord)</label>
-            @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control", @placeholder = "Nhập mật khẩu...", @type = "password" })
+            @Html.LabelFor(x => x.PassWord, new { @class = "font-weight-bold" })
+            <div class="input-icon">
+                <i class="fas fa-key"></i>
+                @Html.TextBoxFor(model => model.PassWord, new { @class = "form-control placeholder-no-fix", @placeholder = "Nhập mật khẩu...", @type = "password", @autocomplete = "off" })
+            </div>
         </div>
     </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-        }
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.TextBoxFor(x => x.Avatar, htmlAttributes: new { @class = "form-control" })
+            <a href="#" id="btnchonanh">Chọn ảnh</a>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(x => x.Role, new { @class = "font-weight-bold" })
+            @Html.DropDownListFor(x => x.Role.RoleId, (IEnumerable<SelectListItem>)listRole, new { @class = "form-control placeholder-no-fix" })
+        </div>
+    </div>
+    <a href="@ViewBag.url"  class="btn btn-primary">Quay lại</a>
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+}
 
 

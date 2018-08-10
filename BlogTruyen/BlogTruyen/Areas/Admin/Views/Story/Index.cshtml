@@ -1,0 +1,170 @@
+﻿@using BlogTruyen_Controller
+@model IEnumerable<BlogTruyen_ValueObjects.Oposts>
+
+@{
+    ViewBag.Title = "Danh sách truyện";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2 class="text-center">Danh sách Truyện</h2>
+
+<p>
+    <a href="@Url.Action("Insert", "Story")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm truyện mới</a>
+</p>
+<div class="table-responsive col-lg-12">
+    <table class="table table-sm table-hover table-bordered table-striped">
+        <tr>
+            <th scope="col" style="text-align:center;" class="hidden">
+                @Html.DisplayNameFor(model => model.IdPost)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.PostName)
+            </th>
+            <th scope="col" style="text-align:center;" class="hidden">
+                @Html.DisplayNameFor(model => model.NameAscii)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Introduction)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Avatar)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.DateCreate)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IdUser)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Source)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IsFull)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IdCategory)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Child)
+            </th>
+            <th scope="col" style="text-align:center;"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row" style="text-align:center;" class="hidden">
+                    @Html.DisplayFor(modelItem => item.IdPost)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.PostName)
+                </td>
+                <td scope="row" style="text-align:center;" class="hidden">
+                    @Html.DisplayFor(modelItem => item.NameAscii)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.Raw(item.Introduction)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    <img src="@item.Avatar" style="height:100px; width:100px" alt="ảnh bìa" />
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Length) Chương
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @item.DateCreate.HasValue.ToString()
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                @{
+                    var user = new cUsers().GetbyId(item.IdUser);
+                    <td scope="row" style="text-align:center;">
+                        @user.FullName
+                    </td>
+                }
+
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Source)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                @if (item.IsDelete)
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đã xóa
+                    </td>
+                }
+                else
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đang hiển thị
+                    </td>
+                }
+
+                @if (item.IsFull)
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đã hoàn thành
+                    </td>
+                }
+                else
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đang viết
+                    </td>
+                }
+
+                @{
+                    var category = new BlogTruyen_Controller.cCategories().GetbyId(item.IdCategory);
+
+                    <td scope="row" style="text-align:center;">
+                        @category.CategoryName
+                    </td>
+                }
+
+                @{
+                    int type = int.Parse(item.Type);
+                    var types = new BlogTruyen_Controller.cTypes().GetbyId(type);
+
+                    <td scope="row" style="text-align:center;">
+                        @types.TypeName
+                    </td>
+                }>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Child)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdPost }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdPost })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@for (int i = 0; i <= ViewBag.MaxPage; i++)
+{
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="@Url.Action("Index", new { pageIndex = i })">@(i + 1)</a>
+        </li>
+    </ul>
+}

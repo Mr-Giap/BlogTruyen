@@ -62,10 +62,22 @@
     <Compile Include="Database\Categories_Getallpaging_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Categories_Getall_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Categories_GetbyId_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Chapter_GetallbyPost_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Chapter_GetallpagingbyPost_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Chapter_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Chapter_Getall_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Chapter_GetbyId_Result.cs">
@@ -74,10 +86,16 @@
     <Compile Include="Database\Comment_Getallpaging_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Comment_Getall_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Comment_GetbyId_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Interested_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Interested_Getall_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Interested_GetbyId_Result.cs">
@@ -101,10 +119,16 @@
     <Compile Include="Database\Post_Getallpaging_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Post_Getall_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Post_GetbyId_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Roles_Getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Roles_Getall_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Roles_GetbyId_Result.cs">
@@ -122,6 +146,9 @@
     <Compile Include="Database\Type_Getallpaging_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Type_Getall_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\User_CheckActive_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
@@ -132,6 +159,9 @@
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\User_getallpaging_Result.cs">
+      <DependentUpon>ModelBlog.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User_Getall_Result.cs">
       <DependentUpon>ModelBlog.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\User_GetbyId_Result.cs">

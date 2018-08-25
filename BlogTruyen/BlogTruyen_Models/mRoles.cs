@@ -27,6 +27,24 @@ namespace BlogTruyen_Models
             }
             return list;
         }
+        public override List<Oroles> Getall()
+        {
+            List<Oroles> list = new List<Oroles>();
+            var data = db.Roles_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
+                {
+                    Oroles role = new Oroles();
+                    role.RoleId = item.RoleId;
+                    role.RoleName = item.RoleName;
+
+                    list.Add(role);
+                }
+                return list;
+            }
+            return list;
+        }
         public override Oroles GetbyId(int id)
         {
             Oroles role = new Oroles();

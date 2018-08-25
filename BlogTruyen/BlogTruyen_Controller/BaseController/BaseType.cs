@@ -12,6 +12,7 @@ namespace BlogTruyen_Controller.BaseController
         protected mTypes model = new mTypes();
         public virtual int Gettotal() { return 0; }
         public virtual List<T> GetAllpaging(int start, int length) { List<T> list = new List<T>(); return list; }
+        public virtual List<T> Getall() { List<T> list = new List<T>(); return list; }
         public virtual T GetbyId(int id) { return default; }
         public virtual int Add(T type) { return 0; }
         public virtual int Update(T type) { return 0; }

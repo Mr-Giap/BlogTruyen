@@ -858,6 +858,5 @@ namespace BlogTruyen_Simple.Utility
             }
             return string.Empty;
         }
-
     }
 }

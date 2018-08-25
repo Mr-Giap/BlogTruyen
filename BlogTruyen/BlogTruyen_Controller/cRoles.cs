@@ -14,6 +14,10 @@ namespace BlogTruyen_Controller
         {
             return model.GetAllpaging(start,length);
         }
+        public override List<Oroles> Getall()
+        {
+            return model.Getall();
+        }
         public override Oroles GetbyId(int id)
         {
             return model.GetbyId(id);

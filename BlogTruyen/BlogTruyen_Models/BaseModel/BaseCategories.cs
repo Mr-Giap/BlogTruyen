@@ -11,7 +11,8 @@ namespace BlogTruyen_Models.BaseModel
     {
         protected BlogTruyenEntities db = new BlogTruyenEntities();
         public virtual int Gettotal() { return 0; }
-        public virtual List<T> Getall(int start, int length) { List<T> list = new List<T>(); return list; }
+        public virtual List<T> Getallpaging(int start, int length) { List<T> list = new List<T>(); return list; }
+        public virtual List<T> Getall() { List<T> list = new List<T>(); return list; }
         public virtual T GetbyId(int id) { return default; }
         public virtual int Add(T category) { return 0; }
         public virtual int Update(T category) { return 0; }

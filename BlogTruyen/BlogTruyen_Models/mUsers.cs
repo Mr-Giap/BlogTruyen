@@ -37,7 +37,36 @@ namespace BlogTruyen_Models
             }
             return user;
         }
-        public override List<Ousers> Getall(int start, int length)
+        public override List<Ousers> Getall()
+        {
+            List<Ousers> list = new List<Ousers>();
+            var data = db.User_Getall();
+            foreach (var item in data)
+            {
+                Ousers user = new Ousers();
+                user.IdUser = item.IdUser;
+                user.FullName = item.FullName;
+                user.Avatar = item.Avatar;
+                user.Address = item.Address;
+                user.Email = item.Email;
+                user.PhoneNumber = item.PhoneNumber;
+                user.Sex = item.Sex;
+                user.BirthDay = item.BirthDay;
+                user.UserName = item.UserName;
+                user.PassWord = item.PassWord;
+                user.DateCreate = item.DateCreate;
+                user.AboutMe = item.AboutMe;
+                user.Permission = item.Permission;
+                user.PassActive = item.PassActive;
+                user.IsActived = item.IsActived;
+                user.IsDelete = item.IsDelete;
+                user.Role = new Oroles { RoleId = item.RoleId };
+
+                list.Add(user);
+            }
+            return list;
+        }
+        public override List<Ousers> Getallpaging(int start, int length)
         {
             List<Ousers> list = new List<Ousers>();
             var data = db.User_getallpaging(start, length);

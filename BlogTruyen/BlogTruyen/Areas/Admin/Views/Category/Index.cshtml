@@ -5,6 +5,38 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+
+@section script{
+    <script>
+            //Xử lý sự kiện xóa
+        $("body").delegate(".btndelete", "click", function () {
+            $(this).addClass('selecting');
+                //Xóa phần tử cha phía ngoài
+                var name = $(this).attr("data-name");
+                var id = $(this).attr("data-id");
+                var Q1 = confirm("Bạn có muốn xóa " + name + " không ?");
+                if (Q1 == true) {                    
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Delete","Category")',
+                            type: 'post',
+                            data: { id: id },
+                            success: function (kq) {
+                                if (kq.rs == "ok") {
+                                    $('.selecting').closest("tr").remove();
+                                }
+                                else {
+                                    alert("Đã có lỗi xảy ra. Vui lòng liên hệ quản trị");
+                                }
+                            }
+                        });
+                }
+
+            });
+
+    </script>
+}
+
 <h2 class=" text-center">Danh sách các nhóm</h2>
 <p class="col-lg-12">
     <a href="@Url.Action("Insert", "Category")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm nhóm mới</a>
@@ -32,7 +64,7 @@
                 </td>
                 <td scope="row" style="text-align:center;">
                     <a href="@Url.Action("Update", "Category", new { @id = item.IdCategory })" class="btn btn-info"><i class="far fa-edit"></i></a>
-                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    <button class="btn btn-danger btndelete" data-id="@item.IdCategory" data-name="@item.CategoryName"><i class="far fa-trash-alt"></i></button>
                 </td>
             </tr>
         }

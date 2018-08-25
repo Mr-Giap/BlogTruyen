@@ -122,7 +122,7 @@ namespace BlogTruyen_Models.Database
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Chapter_GetbyId_Result>("Chapter_GetbyId", idParameter);
         }
     
-        public virtual int Chapter_Insert(Nullable<System.Guid> id, Nullable<System.Guid> idpost, Nullable<int> name, string title, string content, string note, Nullable<System.DateTime> datecreate, Nullable<bool> isdel)
+        public virtual int Chapter_Insert(Nullable<System.Guid> id, Nullable<System.Guid> idpost, Nullable<int> namechap, string title, string content, string note, Nullable<System.DateTime> datecreate, Nullable<bool> isdel)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -132,9 +132,9 @@ namespace BlogTruyen_Models.Database
                 new ObjectParameter("idpost", idpost) :
                 new ObjectParameter("idpost", typeof(System.Guid));
     
-            var nameParameter = name.HasValue ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(int));
+            var namechapParameter = namechap.HasValue ?
+                new ObjectParameter("namechap", namechap) :
+                new ObjectParameter("namechap", typeof(int));
     
             var titleParameter = title != null ?
                 new ObjectParameter("title", title) :
@@ -156,10 +156,10 @@ namespace BlogTruyen_Models.Database
                 new ObjectParameter("isdel", isdel) :
                 new ObjectParameter("isdel", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Insert", idParameter, idpostParameter, nameParameter, titleParameter, contentParameter, noteParameter, datecreateParameter, isdelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Insert", idParameter, idpostParameter, namechapParameter, titleParameter, contentParameter, noteParameter, datecreateParameter, isdelParameter);
         }
     
-        public virtual int Chapter_Update(Nullable<System.Guid> id, Nullable<System.Guid> idpost, string title, string content, string note, Nullable<bool> isdel)
+        public virtual int Chapter_Update(Nullable<System.Guid> id, Nullable<System.Guid> idpost, Nullable<int> namechap, string title, string content, string note, Nullable<bool> isdel)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -168,6 +168,10 @@ namespace BlogTruyen_Models.Database
             var idpostParameter = idpost.HasValue ?
                 new ObjectParameter("idpost", idpost) :
                 new ObjectParameter("idpost", typeof(System.Guid));
+    
+            var namechapParameter = namechap.HasValue ?
+                new ObjectParameter("namechap", namechap) :
+                new ObjectParameter("namechap", typeof(int));
     
             var titleParameter = title != null ?
                 new ObjectParameter("title", title) :
@@ -185,7 +189,7 @@ namespace BlogTruyen_Models.Database
                 new ObjectParameter("isdel", isdel) :
                 new ObjectParameter("isdel", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Update", idParameter, idpostParameter, titleParameter, contentParameter, noteParameter, isdelParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Chapter_Update", idParameter, idpostParameter, namechapParameter, titleParameter, contentParameter, noteParameter, isdelParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> Comment_CountAll()
@@ -968,6 +972,72 @@ namespace BlogTruyen_Models.Database
                 new ObjectParameter("roleid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("User_Update", idParameter, fullnameParameter, avatarParameter, addressParameter, emailParameter, phoneParameter, sexParameter, birthdayParameter, usernameParameter, passwordParameter, aboutmeParameter, permissionParameter, passactiveParameter, isactiveParameter, isdeleteParameter, roleidParameter);
+        }
+    
+        public virtual ObjectResult<Categories_Getall_Result> Categories_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Categories_Getall_Result>("Categories_Getall");
+        }
+    
+        public virtual ObjectResult<Chapter_Getall_Result> Chapter_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Chapter_Getall_Result>("Chapter_Getall");
+        }
+    
+        public virtual ObjectResult<Comment_Getall_Result> Comment_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Comment_Getall_Result>("Comment_Getall");
+        }
+    
+        public virtual ObjectResult<Interested_Getall_Result> Interested_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Interested_Getall_Result>("Interested_Getall");
+        }
+    
+        public virtual ObjectResult<Post_Getall_Result> Post_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Post_Getall_Result>("Post_Getall");
+        }
+    
+        public virtual ObjectResult<Roles_Getall_Result> Roles_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Roles_Getall_Result>("Roles_Getall");
+        }
+    
+        public virtual ObjectResult<Type_Getall_Result> Type_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Type_Getall_Result>("Type_Getall");
+        }
+    
+        public virtual ObjectResult<User_Getall_Result> User_Getall()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<User_Getall_Result>("User_Getall");
+        }
+    
+        public virtual ObjectResult<Chapter_GetallbyPost_Result> Chapter_GetallbyPost(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Chapter_GetallbyPost_Result>("Chapter_GetallbyPost", idParameter);
+        }
+    
+        public virtual ObjectResult<Chapter_GetallpagingbyPost_Result> Chapter_GetallpagingbyPost(Nullable<System.Guid> id, Nullable<int> start, Nullable<int> length)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            var startParameter = start.HasValue ?
+                new ObjectParameter("start", start) :
+                new ObjectParameter("start", typeof(int));
+    
+            var lengthParameter = length.HasValue ?
+                new ObjectParameter("length", length) :
+                new ObjectParameter("length", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Chapter_GetallpagingbyPost_Result>("Chapter_GetallpagingbyPost", idParameter, startParameter, lengthParameter);
         }
     }
 }

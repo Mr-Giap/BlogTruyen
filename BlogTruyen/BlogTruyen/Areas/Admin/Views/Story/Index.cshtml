@@ -7,6 +7,49 @@
 
 }
 
+@section script{
+    <script>
+        $(document).ready(function () {
+            //
+            $('.detail').click(function () {
+                var content = $(this).parents('tr').find('td:nth-child(4)').html();
+                var title = $(this).parents('tr').find('td:nth-child(2)').text();
+                $('.modal-title').text(title);
+                $('.modal-body').html(content);
+                $('#modaldetail').modal().show();
+            })
+
+            //$('.introdure p').addClass('display-story-admin');
+            //Xử lý sự kiện xóa
+            $("body").delegate(".btndelete", "click", function () {
+                $(this).addClass('selecting');
+                //Xóa phần tử cha phía ngoài
+                var name = $(this).attr("data-name");
+                var id = $(this).attr("data-id");
+                var Q1 = confirm("Bạn có muốn xóa " + name + " không ?");
+                if (Q1 == true) {
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Delete","Story")',
+                            type: 'post',
+                            data: { id: id },
+                            success: function (kq) {
+                                if (kq.rs == "ok") {
+                                    $('.selecting').closest("tr").remove();
+                                }
+                                else {
+                                    alert("Đã có lỗi xảy ra. Vui lòng liên hệ quản trị");
+                                }
+                            }
+                        });
+                }
+
+            });
+        });
+
+    </script>
+}
+
 <h2 class="text-center">Danh sách Truyện</h2>
 
 <p>
@@ -15,15 +58,15 @@
 <div class="table-responsive col-lg-12">
     <table class="table table-sm table-hover table-bordered table-striped">
         <tr>
-            <th scope="col" style="text-align:center;" class="hidden">
+            @*<th scope="col" style="text-align:center;" class="hidden">
                 @Html.DisplayNameFor(model => model.IdPost)
-            </th>
+            </th>*@
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(model => model.PostName)
             </th>
-            <th scope="col" style="text-align:center;" class="hidden">
+            @*<th scope="col" style="text-align:center;" class="hidden">
                 @Html.DisplayNameFor(model => model.NameAscii)
-            </th>
+            </th>*@
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(model => model.Introduction)
             </th>
@@ -32,6 +75,9 @@
             </th>
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(model => model.Length)
+            </th>
+            <th scope="col" style="text-align:center;">
+                Độ dài hiện tại
             </th>
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(model => model.DateCreate)
@@ -68,94 +114,104 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td scope="row" style="text-align:center;" class="hidden">
-                    @Html.DisplayFor(modelItem => item.IdPost)
-                </td>
+        <tr>
+            @*<td scope="row" style="text-align:center;" class="hidden">
+                @Html.DisplayFor(modelItem => item.IdPost)
+            </td>*@
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.PostName)
+            </td>
+            @*<td scope="row" style="text-align:center;" class="hidden">
+                @Html.DisplayFor(modelItem => item.NameAscii)
+            </td>*@
+            <td scope="row" style="text-align:center;" class="introdure display-story-admin">
+                @Html.Raw(item.Introduction)
+            </td>
+            <td scope="row" style="text-align:center;">
+                <img src="@item.Avatar" style="height:100px; width:100px" alt="ảnh bìa" />
+            </td>
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.Length) Chương
+            </td>
+            @{
+                var totalChap = new BlogTruyen_Controller.cChapters().Getallbypost(item.IdPost).Count;
                 <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.PostName)
+                    @totalChap Chương
                 </td>
-                <td scope="row" style="text-align:center;" class="hidden">
-                    @Html.DisplayFor(modelItem => item.NameAscii)
-                </td>
+            }
+
+            <td scope="row" style="text-align:center;">
+                @item.DateCreate.Value.ToString("dd-MM-yyyy")
+            </td>
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            @{
+                var user = new cUsers().GetbyId(item.IdUser);
                 <td scope="row" style="text-align:center;">
-                    @Html.Raw(item.Introduction)
+                    @user.FullName
                 </td>
+            }
+
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.Source)
+            </td>
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            @if (item.IsDelete)
+            {
                 <td scope="row" style="text-align:center;">
-                    <img src="@item.Avatar" style="height:100px; width:100px" alt="ảnh bìa" />
+                    Đã xóa
                 </td>
+            }
+            else
+            {
                 <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Length) Chương
+                    Đang hiển thị
                 </td>
+            }
+
+            @if (item.IsFull)
+            {
                 <td scope="row" style="text-align:center;">
-                    @item.DateCreate.HasValue.ToString()
+                    Đã hoàn thành
                 </td>
+            }
+            else
+            {
                 <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Note)
+                    Đang viết
                 </td>
-                @{
-                    var user = new cUsers().GetbyId(item.IdUser);
-                    <td scope="row" style="text-align:center;">
-                        @user.FullName
-                    </td>
-                }
+            }
+
+            @{
+                var category = new BlogTruyen_Controller.cCategories().GetbyId(item.IdCategory);
 
                 <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Source)
+                    @category.CategoryName
                 </td>
+            }
+
+            @{
+                int type = int.Parse(item.Type);
+                var types = new BlogTruyen_Controller.cTypes().GetbyId(type);
+
                 <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Author)
+                    @types.TypeName
                 </td>
-                @if (item.IsDelete)
-                {
-                    <td scope="row" style="text-align:center;">
-                        Đã xóa
-                    </td>
-                }
-                else
-                {
-                    <td scope="row" style="text-align:center;">
-                        Đang hiển thị
-                    </td>
-                }
+            }
+            <td scope="row" style="text-align:center;">
+                @Html.DisplayFor(modelItem => item.Child)
+            </td>
+            <td scope="row" style="text-align:center;">
 
-                @if (item.IsFull)
-                {
-                    <td scope="row" style="text-align:center;">
-                        Đã hoàn thành
-                    </td>
-                }
-                else
-                {
-                    <td scope="row" style="text-align:center;">
-                        Đang viết
-                    </td>
-                }
-
-                @{
-                    var category = new BlogTruyen_Controller.cCategories().GetbyId(item.IdCategory);
-
-                    <td scope="row" style="text-align:center;">
-                        @category.CategoryName
-                    </td>
-                }
-
-                @{
-                    int type = int.Parse(item.Type);
-                    var types = new BlogTruyen_Controller.cTypes().GetbyId(type);
-
-                    <td scope="row" style="text-align:center;">
-                        @types.TypeName
-                    </td>
-                }>
-                <td scope="row" style="text-align:center;">
-                    @Html.DisplayFor(modelItem => item.Child)
-                </td>
-                <td scope="row" style="text-align:center;">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.IdPost }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdPost })
-                </td>
-            </tr>
+                <button class="btn btn-info detail" title="Nội dung"><i class="far fa-list-alt"></i></button>
+                <a href="@Url.Action("Index", "Chapter", new { @id = item.IdPost })" class="btn btn-success" title="Ds chương"><i class="fas fa-list-ul"></i></a>
+                <a href="@Url.Action("Update", "Story", new { @id = item.IdPost })" class="btn btn-warning" title="Sửa"><i class="far fa-edit"></i></a>
+                <button class="btn btn-danger btndelete" data-id="@item.IdPost" data-name="@item.PostName" title="Xóa"><i class="far fa-trash-alt"></i></button>
+            </td>
+        </tr>
         }
 
     </table>
@@ -164,7 +220,28 @@
 {
     <ul class="pagination">
         <li class="page-item">
-            <a class="page-link" href="@Url.Action("Index", new { pageIndex = i })">@(i + 1)</a>
+            <a class="page-link" href="@Url.Action("Index","Story", new { trang = i+1 })">@(i + 1)</a>
+            @*<a class="page-link" href="/Admin/Ds-truyen/trang=@(i+1)">@(i + 1)</a>*@
         </li>
     </ul>
 }
+<!-- Modal detail -->
+<div id="modaldetail" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-block" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>

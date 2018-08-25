@@ -32,6 +32,28 @@ namespace BlogTruyen_Models
             }
             return list;
         }
+        public override List<Ointeresteds> Getall()
+        {
+            List<Ointeresteds> list = new List<Ointeresteds>();
+            var data = db.Interested_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
+                {
+                    Ointeresteds inter = new Ointeresteds();
+                    inter.Idinterested = item.Idinterested;
+                    inter.Like = item.Like;
+                    inter.Love = item.Love;
+                    inter.Hate = item.Hate;
+                    inter.IdPost = item.IdPost;
+                    inter.IdUser = item.IdUser;
+
+                    list.Add(inter);
+                }
+                return list;
+            }
+            return list;
+        }
         public override Ointeresteds GetbyId(Guid id)
         {
             Ointeresteds inter = new Ointeresteds();

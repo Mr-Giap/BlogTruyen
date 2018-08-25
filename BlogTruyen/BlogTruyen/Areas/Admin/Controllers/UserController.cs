@@ -18,7 +18,7 @@ namespace BlogTruyen.Areas.Admin.Controllers
         {
             cUsers csers = new cUsers();
             var getCount = csers.Gettotal();
-            List<Ousers> listdata = csers.Getall(pageindex * pagesize, pagesize);
+            List<Ousers> listdata = csers.Getallpaging(pageindex * pagesize, pagesize);
             ViewBag.Maxpage = (getCount / pagesize) - (getCount % pagesize == 0 ? 1 : 0);
             ViewBag.Page = pageindex;
             return View(listdata);
@@ -26,7 +26,7 @@ namespace BlogTruyen.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Insert()
         {
-            ViewBag.listRole = new SelectList((new cRoles().GetAllpaging(0, 10)), "RoleId", "RoleName");
+            ViewBag.listRole = new SelectList((new cRoles().Getall()), "RoleId", "RoleName");
             return View();
         }
         [HttpPost]
@@ -36,7 +36,6 @@ namespace BlogTruyen.Areas.Admin.Controllers
             user.IdUser = Guid.NewGuid();
             if(user.Avatar == null)
             {
-                //string name = Path.GetFileName(avatar)
                 user.Avatar = "default";
             }
             cUsers csers = new cUsers();
@@ -48,19 +47,21 @@ namespace BlogTruyen.Areas.Admin.Controllers
         {
             cUsers csers = new cUsers();
             var user = csers.GetbyId(id);
-            ViewBag.listRole = new SelectList((new cRoles().GetAllpaging(0, 10)), "RoleId", "RoleName");
+            ViewBag.listRole = new SelectList((new cRoles().Getall()), "RoleId", "RoleName");
             return View(user);
         }
         [HttpPost]
         public ActionResult Update(Ousers user)
         {
+            cUsers csers = new cUsers();
+            csers.Update(user);
             return RedirectToAction("Index");
         }
         [HttpPost]
         public JsonResult Delete(Guid id)
         {
-            
-            return Json(new {rs = "OK" });
+            var item = new cUsers().Delete(id);   
+            return Json(new {rs = "ok" });
         }
         public JsonResult CheckuserName(string username)
         {

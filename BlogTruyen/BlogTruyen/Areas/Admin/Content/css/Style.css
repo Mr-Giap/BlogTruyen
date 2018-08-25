@@ -21,7 +21,7 @@
 /*form login*/
 .login-admin {
     background-image: url('../images/s83Uh1w.jpg');
-    height: 100%;
+    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,10 +29,37 @@
 .logo-login {
     text-align: center;
 }
+.frmlogin {
+    max-width: 450px;
+    width: 100%;
+    margin: auto;
+}
 .frmlogin > .form-group > .center-login {
-    width: 400px;
+    /*width: 400px;*/
     margin: 0 auto;
 }
 .input-icon>i {
     color: black;
+}
+/*form index story*/
+.display-story-admin {
+    min-width:250px;
+    max-width: 300px;
+    width:100%;
+    margin: 0px;
+    display: -webkit-box;
+    max-height: 85px;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    -webkit-box-orient: vertical;
+    line-height: 17px;
+}
+@media only screen and (max-width: 768px) {
+    .display-story-admin {
+        max-height: 82px;
+    }
 }

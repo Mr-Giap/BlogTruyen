@@ -42,6 +42,38 @@ namespace BlogTruyen_Models
             }
             return list;
         }
+        public override List<Oposts> Getall()
+        {
+            List<Oposts> list = new List<Oposts>();
+            var data = db.Post_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
+                {
+                    Oposts post = new Oposts();
+                    post.IdPost = item.IdPost;
+                    post.PostName = item.PostName;
+                    post.NameAscii = item.NameAscii;
+                    post.Introduction = item.Introduction;
+                    post.Avatar = item.Avatar;
+                    post.Length = item.Length;
+                    post.DateCreate = item.DateCreate;
+                    post.Note = item.Note;
+                    post.IdUser = item.IdUser;
+                    post.Source = item.Source;
+                    post.Author = item.Author;
+                    post.IsDelete = item.IsDelete;
+                    post.IsFull = item.IsFull;
+                    post.IdCategory = item.IdCategory;
+                    post.Type = item.Type;
+                    post.Child = item.Child;
+
+                    list.Add(post);
+                }
+                return list;
+            }
+            return list;
+        }
         public override Oposts GetbyId(Guid id)
         {
             Oposts post = new Oposts();

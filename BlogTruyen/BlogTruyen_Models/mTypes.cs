@@ -28,6 +28,24 @@ namespace BlogTruyen_Models
             }
             return list;
         }
+        public override List<Otypes> Getall()
+        {
+            List<Otypes> list = new List<Otypes>();
+            var data = db.Type_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
+                {
+                    Otypes type = new Otypes();
+                    type.IdType = item.IdType;
+                    type.TypeName = item.TypeName;
+
+                    list.Add(type);
+                }
+                return list;
+            }
+            return list;
+        }
         public override Otypes GetbyId(int id)
         {
             Otypes type = new Otypes();
@@ -42,7 +60,7 @@ namespace BlogTruyen_Models
         public override int Gettotal()
         {
             int rs = 0;
-            rs = int.Parse(db.Type_CountAll().ToString());
+            rs = int.Parse(db.Type_CountAll().FirstOrDefault().ToString());
             return rs;
         }
         public override int Add(Otypes type)

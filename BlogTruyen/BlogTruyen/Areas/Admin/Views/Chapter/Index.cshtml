@@ -1,0 +1,164 @@
+﻿@model IEnumerable<BlogTruyen_ValueObjects.Ochapters>
+
+@{
+    ViewBag.Title = "Danh sách chương";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+@section script{
+    <script>
+        $(document).ready(function () {
+
+            $('.detail').click(function () {
+                var content = $(this).parents('tr').find('td:nth-child(5)').html();
+                var title = $(this).parents('tr').find('td:nth-child(4)').text();
+                $('.modal-title').text(title);
+                $('.modal-body').html(content);
+                $('#modaldetail').modal().show();
+            })
+
+            $('.content p').addClass('display-story-a   dmin');
+            //Xử lý sự kiện xóa
+            $("body").delegate(".btndelete", "click", function () {
+                $(this).addClass('selecting');
+                //Xóa phần tử cha phía ngoài
+                var name = $(this).attr("data-name");
+                var id = $(this).attr("data-id");
+                var Q1 = confirm("Bạn có muốn xóa " + name + " không ?");
+                if (Q1 == true) {
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Delete","Story")',
+                            type: 'post',
+                            data: { id: id },
+                            success: function (kq) {
+                                if (kq.rs == "ok") {
+                                    $('.selecting').closest("tr").remove();
+                                }
+                                else {
+                                    alert("Đã có lỗi xảy ra. Vui lòng liên hệ quản trị");
+                                }
+                            }
+                        });
+                }
+
+            });
+        });
+
+    </script>
+}
+
+<h2 class="text-center">Danh sách chương</h2>
+
+<p>
+    @if (ViewBag.idpost != null)
+    {
+        <a href="/Admin/Chapter/Insert?idpost=@ViewBag.idpost" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm chương mới</a>
+    }
+    else
+    {
+        <a href="@Url.Action("Insert","Chapter")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm chương mới</a>
+    }
+
+</p>
+<div class="table-responsive col-lg-12">
+    <table class="table table-sm table-hover table-bordered table-striped">
+        <tr>
+            <th scope="col" style="text-align:center;" class="hidden">
+                @Html.DisplayNameFor(model => model.IdChapter)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IdPost)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.NameChap)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.ChapContent)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.DateCreate)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IsDelete)
+            </th>
+            <th scope="col" style="text-align:center;"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row" style="text-align:center;" class="hidden">
+                    @Html.DisplayFor(modelItem => item.IdChapter)
+                </td>
+                @{
+                    var post = new BlogTruyen_Controller.cPosts().GetbyId(item.IdPost);
+                    <td scope="row" style="text-align:center;">
+                        @post.PostName
+                    </td>
+                }
+                    <td scope="row" style="text-align:center;">
+                        Chương @Html.DisplayFor(modelitem => item.NameChap)
+                    </td>
+
+
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td scope="row" class="display-story-admin content">
+                    @Html.Raw(item.ChapContent)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.DateCreate)
+                </td>
+                @if (item.IsDelete == true)
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đã ẩn
+                    </td>
+                }
+                else
+                {
+                    <td scope="row" style="text-align:center;">
+                        Đang hiển thị
+                    </td>
+                }
+                <td scope="row" style="text-align:center;">
+                    <button class="btn btn-info detail" title="Nội dung"><i class="far fa-list-alt"></i></button>
+                    <a href="@Url.Action("Update", "Chapter", new { @id = item.IdChapter })" class="btn btn-info" title="Sửa"><i class="far fa-edit"></i></a>
+                    <button class="btn btn-danger btndelete" data-id="@item.IdChapter" data-name="@item.NameChap" title="Xóa"><i class="far fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<!-- Modal detail -->
+<div id="modaldetail" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-block" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -22,9 +22,13 @@ namespace BlogTruyen_Controller
         {
             return model.CheckUsername(username);
         }
-        public override List<Ousers> Getall(int start, int length)
+        public override List<Ousers> Getallpaging(int start, int length)
         {
-            return model.Getall(start,length);
+            return model.Getallpaging(start,length);
+        }
+        public override List<Ousers> Getall()
+        {
+            return model.Getall();
         }
         public override Ousers GetbyId(Guid id)
         {

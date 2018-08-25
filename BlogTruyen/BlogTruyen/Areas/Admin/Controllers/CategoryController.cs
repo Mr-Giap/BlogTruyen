@@ -16,7 +16,7 @@ namespace BlogTruyen.Areas.Admin.Controllers
         public ActionResult Index(int pageIndex = 0 )
         {
             cCategories cate = new cCategories();
-            var data = cate.Getall(pageIndex * _pageSize, _pageSize);
+            var data = cate.Getallpaging(pageIndex * _pageSize, _pageSize);
             int total = cate.Gettotal();
             ViewBag.MaxPage = (total / _pageSize) - (total % _pageSize == 0 ? 0 : 1);
             return View(data);

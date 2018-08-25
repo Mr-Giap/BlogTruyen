@@ -14,6 +14,18 @@ namespace BlogTruyen_Controller
         {
             return model.GetallPaging(start, length);
         }
+        public override List<Ochapters> Getallbypost(Guid id)
+        {
+            return model.GetallbyPost(id);
+        }
+        public override List<Ochapters> GetallPagingbypost(Guid id, int start, int length)
+        {
+            return model.GetallPagingbypost(id, start, length);
+        }
+        public override List<Ochapters> Getall()
+        {
+            return model.Getall();
+        }
         public override Ochapters GetbyId(Guid id)
         {
             return model.GetbyId(id);

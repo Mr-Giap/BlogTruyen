@@ -32,6 +32,28 @@ namespace BlogTruyen_Models
             }
             return list;
         }
+        public override List<Ocomments> Getall()
+        {
+            List<Ocomments> list = new List<Ocomments>();
+            var data = db.Comment_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
+                {
+                    Ocomments comment = new Ocomments();
+                    comment.IdComment = item.IdComment;
+                    comment.IdPost = item.IdPost;
+                    comment.IdUser = item.IdUser;
+                    comment.ReplyToUser = item.ReplyToUser;
+                    comment.Content = item.Content;
+                    comment.DateCreate = item.DateCreate;
+
+                    list.Add(comment);
+                }
+                return list;
+            }
+            return list;
+        }
         public override Ocomments GetbyId(Guid id)
         {
             Ocomments comment = new Ocomments();

@@ -12,7 +12,12 @@ namespace BlogTruyen
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.MapMvcAttributeRoutes();
+            routes.MapRoute(
+                name: "paging Default",
+                url: "Ds-truyen/{id}",
+                defaults: new { controller = "Story", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "BlogTruyen.Areas.Admin.Controllers" }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

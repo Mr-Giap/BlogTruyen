@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Thêm truyện";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var listCate = ViewBag.listCate;
+    var listType = ViewBag.listType;
 }
 @section script{
         <script>
@@ -39,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PostName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PostName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.PostName, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.PostName, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +64,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(x => x.Avatar, htmlAttributes: new { @class = "form-control" })
+                @Html.TextBoxFor(x => x.Avatar, htmlAttributes: new { @class = "form-control", @autocomplete = "off" })
                 <a class="btn btn-default" href="#" id="btnchonanh">Chọn ảnh</a>
                 @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
             </div>
@@ -71,7 +73,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -86,14 +88,14 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdUser, new { htmlAttributes = new { @class = "form-control hidden" } })
+                @Html.EditorFor(model => model.IdUser, new { htmlAttributes = new { @class = "form-control hidden", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -101,7 +103,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Source, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.Source, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -109,7 +111,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Author, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -135,7 +137,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.IdCategory, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.IdCategory, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(x => x.IdCategory, (IEnumerable<SelectListItem>)listCate, new { @class = "form-control placeholder-no-fix" })
                 @Html.ValidationMessageFor(model => model.IdCategory, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -143,7 +145,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(x => x.Type, (IEnumerable<SelectListItem>)listType, new { @class = "form-control placeholder-no-fix" })
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -151,19 +153,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Child, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Child, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Child, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
                 @Html.ValidationMessageFor(model => model.Child, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <a href="@Url.Action("Index","Story")" class="btn btn-default">Trở lại danh sách</a>
+                <input type="submit" value="Thêm" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

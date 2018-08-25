@@ -5,6 +5,39 @@
     ViewBag.Title = "Danh sách tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
+@section script{
+    <script>
+            //Xử lý sự kiện xóa
+        $("body").delegate(".btndelete", "click", function () {
+            $(this).addClass('selecting');
+                //Xóa phần tử cha phía ngoài
+                var name = $(this).attr("data-name");
+                var id = $(this).attr("data-id");
+                var Q1 = confirm("Bạn có muốn xóa " + name + " không ?");
+                if (Q1 == true) {
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Delete","User")',
+                            type: 'post',
+                            data: { id: id },
+                            success: function (kq) {
+                                console.log(kq);
+                                if (kq.rs == "ok") {
+                                    $('.selecting').closest("tr").remove();
+                                }
+                                else {
+                                    alert("Đã có lỗi xảy ra. Vui lòng liên hệ quản trị");
+                                }
+                            }
+                        });
+                }
+
+            });
+
+    </script>
+}
+
 <h2 class="text-center">Danh sách tài khoản</h2>
 <div>
     <a href="@Url.Action("Insert","User")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm mới tài khoản</a>
@@ -13,7 +46,7 @@
     <table class="table table-sm table-hover table-bordered table-striped">
         <tr>
             <th scope="col" style="text-align:center;" class="hidden">
-                @Html.DisplayNameFor(x =>x.IdUser)
+                @Html.DisplayNameFor(x => x.IdUser)
             </th>
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(x => x.FullName)
@@ -46,10 +79,10 @@
                 @Html.DisplayNameFor(x => x.DateCreate)
             </th>
             <th scope="col" style="text-align:center;">
-                @Html.DisplayNameFor(x => x.IsActived)
+                @Html.DisplayNameFor(x => x.IsDelete)
             </th>
             <th scope="col" style="text-align:center;">
-                @Html.DisplayNameFor(x => x.IsDelete)
+                @Html.DisplayNameFor(x => x.IsActived)
             </th>
             <th scope="col" style="text-align:center;">
                 @Html.DisplayNameFor(x => x.Role)
@@ -68,7 +101,7 @@
                     @item.FullName
                 </td>
                 <td scope="row" style="text-align:center;">
-                   <img src="@item.Avatar" style="height:100px; width:100px" alt="avatar user" /> 
+                    <img src="@item.Avatar" style="height:100px; width:100px" alt="avatar user" />
                 </td>
                 <td scope="row" style="text-align:center;">
                     @item.Address
@@ -100,7 +133,7 @@
                     @item.PassWord
                 </td>
                 <td scope="row" style="text-align:center;">
-                    @item.DateCreate.ToString()                
+                    @item.DateCreate.ToString()
                 </td>
                 @{
                     if (item.IsDelete == true)
@@ -129,8 +162,8 @@
                     @item.Role.RoleName
                 </td>
                 <td scope="row" style="text-align:center;">
-                    <a href="@Url.Action("Update", "User", new { @id = item.IdUser })" class="btn btn-info"><i class="far fa-edit"></i></a>
-                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                    <a href="@Url.Action("Update", "User", new { @id = item.IdUser })" class="btn btn-info" title="Sửa"><i class="far fa-edit"></i></a>
+                    <button class="btn btn-danger btndelete" data-id="@item.IdUser" data-name="@item.UserName" title="Xóa"><i class="far fa-trash-alt"></i></button>
                 </td>
             </tr>
         }

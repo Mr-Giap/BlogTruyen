@@ -14,6 +14,10 @@ namespace BlogTruyen_Controller
         {
             return model.GetallPaging(start, length);
         }
+        public override List<Ocomments> Getall()
+        {
+            return model.Getall();
+        }
         public override Ocomments GetbyId(Guid id)
         {
             return model.GetbyId(id);

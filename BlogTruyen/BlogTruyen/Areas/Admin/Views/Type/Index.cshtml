@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BlogTruyen_ValueObjects.Otypes>
+
+@{
+    ViewBag.Title = "Danh sách loại truyện";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section script{
+    <script>
+            //Xử lý sự kiện xóa
+        $("body").delegate(".btndelete", "click", function () {
+            $(this).addClass('selecting');
+                //Xóa phần tử cha phía ngoài
+                var name = $(this).attr("data-name");
+                var id = $(this).attr("data-id");
+                var Q1 = confirm("Bạn có muốn xóa " + name + " không ?");
+                if (Q1 == true) {
+                    $.ajax(
+                        {
+                            url: '@Url.Action("Delete","Type")',
+                            type: 'post',
+                            data: { id: id },
+                            success: function (kq) {
+                                if (kq.rs == "ok") {
+                                    $('.selecting').closest("tr").remove();
+                                }
+                                else {
+                                    alert("Đã có lỗi xảy ra. Vui lòng liên hệ quản trị");
+                                }
+                            }
+                        });
+                }
+
+            });
+
+    </script>
+}
+
+<h2 class=" text-center">Danh sách loại truyện</h2>
+
+<p class="col-lg-12">
+    <a href="@Url.Action("Insert", "Type")" class="btn btn-info btn-block" style="margin-bottom:10px; float:right;">Thêm loại mới</a>
+</p>
+<div class="table-responsive col-lg-12">
+    <table class="table table-sm table-hover table-bordered table-striped">
+        <tr>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.IdType)
+            </th>
+            <th scope="col" style="text-align:center;">
+                @Html.DisplayNameFor(model => model.TypeName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.IdType)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td scope="row" style="text-align:center;">
+                    <a href="@Url.Action("Update", "Type", new { @id = item.IdType })" class="btn btn-info" title="Sửa"><i class="far fa-edit"></i></a>
+                    <button class="btn btn-danger btndelete" data-id="@item.IdType" data-name="@item.TypeName" title="Xóa"><i class="far fa-trash-alt"></i></button>
+                </td>
+            </tr>
+        }
+
+    </table>
+    @for (int i = 0; i <= ViewBag.MaxPage; i++)
+    {
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Index", new { pageIndex = i })">@(i + 1)</a>
+            </li>
+        </ul>
+    }
+</div>

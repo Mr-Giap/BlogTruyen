@@ -10,13 +10,31 @@ namespace BlogTruyen_Models
 {
     public class mCategories:BaseCategories<Ocategories>
     {
-        public override List<Ocategories> Getall(int start, int length)
+        public override List<Ocategories> Getallpaging(int start, int length)
         {
             List<Ocategories> list = new List<Ocategories>();
             var data = db.Categories_Getallpaging(start, length);
             if(data != null)
             {
                 foreach(var item in data)
+                {
+                    Ocategories category = new Ocategories();
+                    category.IdCategory = item.IdCategory;
+                    category.CategoryName = item.CategoryName;
+
+                    list.Add(category);
+                }
+                return list;
+            }
+            return list;
+        }
+        public override List<Ocategories> Getall()
+        {
+            List<Ocategories> list = new List<Ocategories>();
+            var data = db.Categories_Getall();
+            if (data != null)
+            {
+                foreach (var item in data)
                 {
                     Ocategories category = new Ocategories();
                     category.IdCategory = item.IdCategory;

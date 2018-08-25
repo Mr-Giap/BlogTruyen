@@ -14,6 +14,10 @@ namespace BlogTruyen_Controller
         {
             return model.GetAllpaging(start,length);
         }
+        public override List<Otypes> Getall()
+        {
+            return model.Getall();
+        }
         public override int Gettotal()
         {
             return model.Gettotal();

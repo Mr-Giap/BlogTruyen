@@ -10,9 +10,13 @@ namespace BlogTruyen_Controller
 {
     public class cCategories:BaseCategories<Ocategories>
     {
-        public override List<Ocategories> Getall(int start, int length)
+        public override List<Ocategories> Getallpaging(int start, int length)
         {
-            return model.Getall(start, length);
+            return model.Getallpaging(start, length);
+        }
+        public override List<Ocategories> Getall()
+        {
+            return model.Getall();
         }
         public override Ocategories GetbyId(int id)
         {
